@@ -22,6 +22,10 @@ Ver 1.01 2023-02-24
 -SHOP UI 프로토타입
 -Jellyfish List UI 프로토타입
 -UI
+Ver 1.02 2023-02-27
+-해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료
+
 
 1) 단기 목표 : UI Screen Position to world position -> 해결
-              콘텐츠하자
+2) UI : BLUR 효과가 있는 UI를 쉐이를 사용하여 구현하여보자.   
+

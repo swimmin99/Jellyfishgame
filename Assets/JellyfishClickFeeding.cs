@@ -9,7 +9,7 @@ public class JellyfishClickFeeding : MonoBehaviour
     public Color MouseOffColor2;
     public GameObject food;
     public float clickAmount;
-    float addedSize;
+    public float addedSize;
 
     void Start()
     {
@@ -26,7 +26,6 @@ public class JellyfishClickFeeding : MonoBehaviour
         (
            addedSize, addedSize, addedSize
         );
-        print("size" + clickAmount);
     }
 
     private void OnMouseDown()

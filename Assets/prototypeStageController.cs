@@ -19,7 +19,7 @@ public class prototypeStageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      //  MoneyGUIObject.text = "Money : " + money.ToString();
+        MoneyGUIObject.text = "Money : " + money.ToString();
         if (isFeeding)
         {
             feeding();

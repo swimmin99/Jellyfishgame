@@ -21,8 +21,7 @@ public class moenyCS : MonoBehaviour
         clickDetectingCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         clickDetectingRigidbody = GetComponent<Rigidbody>();
         targetRenderer = GetComponent<Renderer>();
-        transform.position = jellyfishOb.transform.position;
-
+        
         mouseOnTarget = false;
     }
 
@@ -34,8 +33,8 @@ public class moenyCS : MonoBehaviour
             {
                 moneyStageComponenet.money += 10;
                 print("money click detected");
-                Destroy(gameObject);
-            }
+            Destroy(transform.parent.gameObject);
+        }
 
     }
 

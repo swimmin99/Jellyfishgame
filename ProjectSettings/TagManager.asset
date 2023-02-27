@@ -10,6 +10,9 @@ TagManager:
   - StainController
   - TargetPosition
   - JellyfishTag
+  - JellyfishListController
+  - JellyfishUI
+  - JellyfishListContent
   layers:
   - Default
   - TransparentFX

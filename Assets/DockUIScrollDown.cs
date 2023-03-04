@@ -11,59 +11,72 @@ public class DockUIScrollDown : MonoBehaviour
     // Start is called before the first frame update
     float pastTime;
     float targetTime;
-
-
+    float moveSize;
     void Start()
     {
         goingUp = false;
-        rectUItransform = GetComponent<RectTransform>();
         isDown = true;
-        pastTime = 0f;
+        //pastTime = 0f;
+        //moveSize = 700;
+        rectUItransform = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (goingUp)
-        {
-            print("Up");
-            pastTime += Time.deltaTime;
+        //if (goingUp)
+        //{
+        //    print("Up");
+        //    //pastTime += Time.deltaTime;
+        //    LeanTween.moveLocalY(gameObject, rectUItransform.localPosition.y - 15f, 20f);
+        //    //rectUItransform.anchoredPosition = new Vector2(rectUItransform.anchoredPosition.x, ScreenEnd.y);
+        //    //if (Mathf.Sin(pastTime) >= 0.5)
+        //    //{
+        //    //    pastTime = 0f;
+        //    //    goingUp = false;
+        //    //    isDown = false;
+        //    //}
+        //}
 
-            rectUItransform.anchoredPosition = new Vector2(rectUItransform.anchoredPosition.x, rectUItransform.anchoredPosition.y + 14*Mathf.Sin(pastTime));
-            if (Mathf.Sin(pastTime) >= 0.5)
-            {
-                pastTime = 0f;
-                goingUp = false;
-                isDown = false;
-            }
-        }
 
+        //if (goingDown)
+        //{
+        //    print("Down");
+        //    pastTime += Time.deltaTime;
 
-        if (goingDown)
-        {
-            print("Down");
-            pastTime += Time.deltaTime;
-
-            rectUItransform.anchoredPosition = new Vector2(rectUItransform.anchoredPosition.x, rectUItransform.anchoredPosition.y - 14 * Mathf.Sin(pastTime));
-            if (Mathf.Sin(pastTime) >= 0.5)
-            {
-                pastTime = 0f;
-                goingDown = false;
-                isDown = true;
-            }
-        }
+        //    rectUItransform.anchoredPosition = new Vector2(rectUItransform.anchoredPosition.x, rectUItransform.anchoredPosition.y - moveSize * Mathf.Sin(pastTime));
+        //    if (Mathf.Sin(pastTime) >= 0.5)
+        //    {
+        //        pastTime = 0f;
+        //        goingDown = false;
+        //        isDown = true;
+        //    }
+        //}
     }
 
     public void OnClickUI()
     {
-        if (isDown)
+        if (isDown == true && goingUp == false && goingDown == false)
         {
             goingUp = true;
+            LeanTween.moveLocalY(gameObject, rectUItransform.localPosition.y + 200f, 1f).setEase(LeanTweenType.easeOutSine).setOnComplete(isUpFalse);
         }
-        else
+        else if (isDown == false && goingUp == false && goingDown == false)
         {
             goingDown = true;
+            LeanTween.moveLocalY(gameObject, rectUItransform.localPosition.y - 200f, 1f).setEase(LeanTweenType.easeOutSine).setOnComplete(isDownTrue);
         }
+    }
 
+    public void isUpFalse()
+    {
+        isDown = false;
+        goingUp = false;
+    }
+
+    public void isDownTrue()
+    {
+        isDown = true;
+        goingDown = false;
     }
 }

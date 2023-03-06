@@ -33,7 +33,8 @@ public class JellyfishClickFeeding : MonoBehaviour
        
             if (Input.GetMouseButtonDown(0))
             {
-                print("Feeding click detected");
+            LeanTween.scale(gameObject, new Vector3(transform.localScale.x *1.1f, transform.localScale.y * 1.1f, transform.localScale.z * 1.1f), 1f).setEase(LeanTweenType.punch);
+            print("Feeding click detected");
                 Instantiate(food, transform.position, transform.rotation);
                 clickAmount += 0.001f/transform.localScale.x;
             }

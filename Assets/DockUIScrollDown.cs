@@ -59,12 +59,12 @@ public class DockUIScrollDown : MonoBehaviour
         if (isDown == true && goingUp == false && goingDown == false)
         {
             goingUp = true;
-            LeanTween.moveLocalY(gameObject, rectUItransform.localPosition.y + 200f, 1f).setEase(LeanTweenType.easeOutSine).setOnComplete(isUpFalse);
+            LeanTween.moveLocalY(gameObject, rectUItransform.localPosition.y + 200f, 0.5f).setEase(LeanTweenType.easeOutSine).setOnComplete(isUpFalse);
         }
         else if (isDown == false && goingUp == false && goingDown == false)
         {
             goingDown = true;
-            LeanTween.moveLocalY(gameObject, rectUItransform.localPosition.y - 200f, 1f).setEase(LeanTweenType.easeOutSine).setOnComplete(isDownTrue);
+            LeanTween.moveLocalY(gameObject, rectUItransform.localPosition.y - 200f, 0.5f).setEase(LeanTweenType.easeOutSine).setOnComplete(isDownTrue);
         }
     }
 

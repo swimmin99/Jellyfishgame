@@ -78,7 +78,7 @@ Material:
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
     - _CullModeForward: 2
-    - _DepthFade: 4.18
+    - _DepthFade: 12.48
     - _DepthOffsetEnable: 0
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
@@ -91,7 +91,7 @@ Material:
     - _FoamRippleSpeed: 0.1
     - _FoamScreenRatio: -1
     - _NormalMapTiling: 2
-    - _NormalStrength: 0.087
+    - _NormalStrength: 1
     - _OpaqueCullMode: 2
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -132,11 +132,11 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.3254717, g: 0.6320755, b: 1, a: 0}
-    - _Color2: {r: 0.34171477, g: 0.23829652, b: 0.990566, a: 0}
+    - _Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0}
+    - _Color2: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FoamColor: {r: 0.03066039, g: 0.30820262, b: 0.5, a: 1}
+    - _FoamColor: {r: 0.50655043, g: 0.5082565, b: 0.509434, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3147715986091188729
 MonoBehaviour:

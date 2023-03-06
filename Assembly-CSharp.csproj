@@ -80,6 +80,7 @@
     <Compile Include="Assets\foodCS.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacy.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
+    <Compile Include="Assets\Jettelly Assets\Jettelly Simple Blur UI\Script\UIBlurController.cs" />
     <Compile Include="Assets\NewNewTargetMovement.cs" />
     <Compile Include="Assets\ShopJellyBuyButton.cs" />
     <Compile Include="Assets\jellyfishMovementNew.cs" />
@@ -121,7 +122,6 @@
     <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
     <Compile Include="Assets\DockUIScrollDown.cs" />
-    <Compile Include="Assets\Jettelly Assets\Jettelly Simple Blur UI\Script\UIBlurController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

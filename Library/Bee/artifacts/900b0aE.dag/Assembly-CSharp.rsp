@@ -426,6 +426,7 @@
 "Assets/newTargetMovement.cs"
 "Assets/particleTesterPL.cs"
 "Assets/PlanktonCS.cs"
+"Assets/PopUpUIScript.cs"
 "Assets/PrototypeStageCleaningController.cs"
 "Assets/prototypeStageController.cs"
 "Assets/ShopJellyBuyButton.cs"

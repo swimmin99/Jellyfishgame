@@ -7,6 +7,10 @@ public class JellyfishListUI : MonoBehaviour
 {
     public Transform parentObj;
     public GameObject buttonTemplate;
+
+    public GameObject POPUPKeepingUI;
+    public GameObject POPUPdisablingUI;
+
     GameObject g;
     static int selectedButtonNum;
     // Start is called before the first frame update
@@ -49,10 +53,14 @@ public class JellyfishListUI : MonoBehaviour
         {
             foreach (GameObject go in list)
             {
+                GameObject GOtemp;
                 print("InstancingButtons");
-                Instantiate(buttonTemplate, transform).GetComponent<JellyfishButtonCS>().targetObject = go;
-                    
+                GOtemp = Instantiate(buttonTemplate, transform);
+                GOtemp.GetComponent<JellyfishButtonCS>().targetObject = go;
+                GOtemp.GetComponent<JellyfishButtonCS>().GetComponent<JellyfishButtonCS>().parentCanvas = POPUPKeepingUI;
+                GOtemp.GetComponent<JellyfishButtonCS>().GetComponent<JellyfishButtonCS>().panelUI = POPUPdisablingUI;
+
         }
-        }
+    }
 
     }

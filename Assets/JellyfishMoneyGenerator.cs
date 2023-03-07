@@ -32,7 +32,7 @@ public class JellyfishMoneyGenerator : MonoBehaviour
         timePast += Time.deltaTime;
         if(timePast > generationTerm)
         {
-            Instantiate(MoneyPrefabs, transform.position, transform.rotation).GetComponentInChildren<MeshRenderer>().material = moneyMaterial;
+            Instantiate(MoneyPrefabs, transform.position, transform.rotation).GetComponentInChildren<moenyCS>().myMaterial = moneyMaterial;
             timePast = 0f;
         }
     }

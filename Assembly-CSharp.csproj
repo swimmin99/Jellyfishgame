@@ -102,6 +102,7 @@
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\jellyfishMovement.cs" />
     <Compile Include="Assets\Jellyfish_Speicification.cs" />
+    <Compile Include="Assets\PopUpUIScript.cs" />
     <Compile Include="Assets\targetMovement.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />

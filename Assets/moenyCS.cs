@@ -9,7 +9,7 @@ public class moenyCS : MonoBehaviour
     GameObject jellyfishOb;
     prototypeStageController moneyStageComponenet;
     public JellyfishStatusHygine isCleaningComponent;
-
+    public Material myMaterial;
     private Renderer targetRenderer;
     public Color MouseOnColor1;
     public Color MouseOffColor2;
@@ -21,7 +21,8 @@ public class moenyCS : MonoBehaviour
         clickDetectingCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         clickDetectingRigidbody = GetComponent<Rigidbody>();
         targetRenderer = GetComponent<Renderer>();
-        
+        GetComponentInChildren<MeshRenderer>().material.CopyPropertiesFromMaterial(myMaterial);
+       // GetComponentInChildren<MeshRenderer>().GetComponentInChildren<MeshRenderer>().sharedMaterial = myMaterial;
         mouseOnTarget = false;
     }
 
@@ -37,7 +38,6 @@ public class moenyCS : MonoBehaviour
         }
 
     }
-
 
     private void OnMouseEnter()
     {

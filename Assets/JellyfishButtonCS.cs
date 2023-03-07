@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class JellyfishButtonCS : MonoBehaviour
 {
+    public GameObject parentCanvas;
+    public GameObject popUpUIPrefab;
+    public GameObject panelUI;
+
     public int buttonNumber;
     public GameObject targetObject;
     public TMP_Text targetObj_Name;
@@ -19,8 +23,31 @@ public class JellyfishButtonCS : MonoBehaviour
 
     public void deleteTargetObject()
     {
+        print("deleteJellyfish");
         Destroy(targetObject);
         Destroy(gameObject);
+    }
+
+
+    public void panelSetActive()
+    {
+        panelUI.SetActive(true);
+    }
+
+    public void panelDisabled()
+    {
+        panelUI.SetActive(false);
+    }
+
+    public void DeleteButtonClicked()
+    {
+        GameObject popup;
+        popup = Instantiate(popUpUIPrefab, parentCanvas.transform);
+        popup.GetComponent<PopUpUIScript>().cautionString = "Are you sure you sell the jellyfish?";
+
+        //popup.transform.Find("PopUpButtonGroup").transform.Find("YesButton").GetComponent<Button>().onClick.AddListener(delegate { panelSetActive(); });
+        popup.transform.Find("PopUpButtonGroup").transform.Find("YesButton").GetComponent<Button>().onClick.AddListener(delegate { deleteTargetObject(); });
+        //panelDisabled();
     }
 
 }

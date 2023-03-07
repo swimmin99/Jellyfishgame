@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class ShopJellyBuyButton : MonoBehaviour
 {
-    public GameObject parentCanvas;
+    public GameObject myTargetCanvas;
     public GameObject popUpUIPrefab;
-    public GameObject panelUI;
     public GameObject jellyProductPrefab;
     private prototypeStageController stageController;
     private GameObject jellyfishController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,14 +24,15 @@ public class ShopJellyBuyButton : MonoBehaviour
         
     }
 
+    public delegate void feature();
 
     public void instantiateProduct()
     {
         print("printDetected");
-        if (stageController.money >= 20)
+        if (stageController.money >= 10)
         {
             print("buy successed");
-            stageController.money -= 20;
+            stageController.money -= 10;
             Instantiate(jellyProductPrefab, jellyfishController.transform).transform.position = new Vector3(0, 0, 0);
         }
         else
@@ -40,23 +41,13 @@ public class ShopJellyBuyButton : MonoBehaviour
         }
     }
 
-    public void panelSetActive()
-    {
-        panelUI.SetActive(true);
-    }
-
-    public void panelDisabled()
-    {
-        panelUI.SetActive(false);
-    }
+   
     public void BuyButtonClicked()
     {
         GameObject popup;
-        popup = Instantiate(popUpUIPrefab, parentCanvas.transform);
-        popup.GetComponent<PopUpUIScript>().cautionString = "Are you sure?";
-        //popup.transform.Find("PopUpButtonGroup").transform.Find("YesButton").GetComponent<Button>().onClick.AddListener(delegate { instantiateProduct(); });
-        //popup.transform.Find("PopUpButtonGroup").transform.Find("YesButton").GetComponent<Button>().onClick.AddListener(delegate { panelSetActive(); });
-        //popup.transform.Find("PopUpButtonGroup").transform.Find("NoButton").GetComponent<Button>().onClick.AddListener(delegate { panelSetActive(); });
-        panelDisabled();
+        popup = Instantiate(popUpUIPrefab);
+        popup.GetComponent<PopUpUISCnew>().targetCanvas = myTargetCanvas;
+        popup.GetComponent<PopUpUISCnew>().GetMethodfromCaller = instantiateProduct;
+        myTargetCanvas.SetActive(false);
     }
 }

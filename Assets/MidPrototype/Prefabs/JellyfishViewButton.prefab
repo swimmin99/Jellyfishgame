@@ -232,9 +232,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentCanvas: {fileID: 0}
-  popUpUIPrefab: {fileID: 1485148865482256293, guid: dd410395acada674688fcce9a2b828f9,
+  popUpUIPrefab: {fileID: 4714764234807755090, guid: 3ed8de47bb92447a8b480cdf7052da57,
     type: 3}
-  panelUI: {fileID: 0}
+  selfOB: {fileID: 4589370947098130860}
   buttonNumber: 0
   targetObject: {fileID: 0}
   targetObj_Name: {fileID: 1237754033420657778}

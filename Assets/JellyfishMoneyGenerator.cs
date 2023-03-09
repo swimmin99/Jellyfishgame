@@ -10,6 +10,7 @@ public class JellyfishMoneyGenerator : MonoBehaviour
 
 
     public GameObject MoneyPrefabs;
+    private GameObject jellyfishContainer;
     JellyfishStatusHunger hungerComponenet;
     JellyfishStatusHygine hygineComponent;
 
@@ -19,7 +20,7 @@ public class JellyfishMoneyGenerator : MonoBehaviour
         moneyMaterial = GetComponent<MeshRenderer>().material;
         hungerComponenet = GetComponent<JellyfishStatusHunger>();
         hygineComponent = GetComponent<JellyfishStatusHygine>();
-
+        jellyfishContainer = GameObject.FindGameObjectWithTag("JellyfishListController");
         timePast = 0f;
 
 
@@ -32,7 +33,11 @@ public class JellyfishMoneyGenerator : MonoBehaviour
         timePast += Time.deltaTime;
         if(timePast > generationTerm)
         {
-            Instantiate(MoneyPrefabs, transform.position, transform.rotation).GetComponentInChildren<moenyCS>().myMaterial = moneyMaterial;
+            GameObject temp;
+            temp = Instantiate(MoneyPrefabs, jellyfishContainer.transform);
+            temp.transform.transform.position = transform.position;
+            temp.transform.rotation = transform.rotation;
+            temp.GetComponentInChildren<moenyCS>().myMaterial = moneyMaterial;
             timePast = 0f;
         }
     }

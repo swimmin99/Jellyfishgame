@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ShopJellyBuyButton : MonoBehaviour
 {
-    public GameObject myTargetCanvas;
+    //public GameObject myTargetCanvas;
     public GameObject popUpUIPrefab;
     public GameObject jellyProductPrefab;
     private prototypeStageController stageController;
@@ -31,9 +31,12 @@ public class ShopJellyBuyButton : MonoBehaviour
         print("printDetected");
         if (stageController.money >= 10)
         {
+            GameObject temp;
             print("buy successed");
             stageController.money -= 10;
-            Instantiate(jellyProductPrefab, jellyfishController.transform).transform.position = new Vector3(0, 0, 0);
+            temp = Instantiate(jellyProductPrefab, jellyfishController.transform);
+            temp.transform.position = new Vector3(0, 0, 0);
+            temp.GetComponent<Jellyfish_Speicification>().callInputString();
         }
         else
         {
@@ -46,8 +49,8 @@ public class ShopJellyBuyButton : MonoBehaviour
     {
         GameObject popup;
         popup = Instantiate(popUpUIPrefab);
-        popup.GetComponent<PopUpUISCnew>().targetCanvas = myTargetCanvas;
+//        popup.GetComponent<PopUpUISCnew>().targetCanvas = myTargetCanvas;
         popup.GetComponent<PopUpUISCnew>().GetMethodfromCaller = instantiateProduct;
-        myTargetCanvas.SetActive(false);
+        //myTargetCanvas.SetActive(false);
     }
 }

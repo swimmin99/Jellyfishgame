@@ -63,6 +63,7 @@
     <Compile Include="Assets/LeanTween/Framework/LTSeq.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingUnitTests.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralUISpace.cs" />
+    <Compile Include="Assets/PopUpUISCnew.cs" />
     <Compile Include="Assets/New2TargetMovement.cs" />
     <Compile Include="Assets/JellyfishKeepingTrack.cs" />
     <Compile Include="Assets/JellyfishButtonCS.cs" />
@@ -123,7 +124,8 @@
     <Compile Include="Assets/LeanTween/Examples/Archived/TestingRigidbodyCS.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
     <Compile Include="Assets/DockUIScrollDown.cs" />
-    <Compile Include="Assets/PopUpUISCnew.cs" />
+    <Compile Include="Assets/inputUISC.cs" />
+    <Compile Include="Assets/inputSenderSC.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

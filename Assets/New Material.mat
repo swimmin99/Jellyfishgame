@@ -125,7 +125,7 @@ Material:
     - _UseShadowThreshold: 0
     - _WaterNoiseScale: 0.04
     - _WaveFrequency: 0.76
-    - _WaveHeight: 0.52
+    - _WaveHeight: 0.16
     - _WaveSpeed: 0.05
     - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 4

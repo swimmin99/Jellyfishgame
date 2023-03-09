@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class JellyfishButtonCS : MonoBehaviour
 {
-    public GameObject parentCanvas;
+    //public GameObject parentCanvas;
     public GameObject popUpUIPrefab;
     public GameObject selfOB;
 
@@ -16,14 +16,14 @@ public class JellyfishButtonCS : MonoBehaviour
     public TMP_Text targetObj_Name;
     public TMP_Text targetObj_Description;
 
-    bool check;
+//    bool check;
 
     // Start is called before the first frame update
     void Start()
     {
         targetObj_Name.text = targetObject.GetComponent<Jellyfish_Speicification>().jellName;
         targetObj_Description.text = "SIZE :" + targetObject.GetComponentInChildren<JellyfishClickFeeding>().addedSize.ToString();
-        check = false;
+//        check = false;
     }
 
     public void deleteTargetObject()
@@ -38,20 +38,20 @@ public class JellyfishButtonCS : MonoBehaviour
     {
         GameObject popup;
         popup = Instantiate(popUpUIPrefab);
-        popup.GetComponent<PopUpUISCnew>().targetCanvas = parentCanvas;
+        //popup.GetComponent<PopUpUISCnew>().targetCanvas = parentCanvas;
         popup.GetComponent<PopUpUISCnew>().GetMethodfromCaller = deleteTargetObject;
         StartCoroutine(WaitForIt());
-        if (check)
-        {
-            parentCanvas.SetActive(false);
-        }        
+        //if (check)
+        //{
+        //    parentCanvas.SetActive(false);
+        //}        
     }
 
 
     IEnumerator WaitForIt()
     {
         yield return new WaitForEndOfFrame();
-        check = true;
+  //      check = true;
     }
 
 }

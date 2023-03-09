@@ -11,8 +11,10 @@ public class JellyfishClickFeeding : MonoBehaviour
     public float clickAmount;
     public float addedSize;
 
+    public bool resizing;
     void Start()
     {
+        //resizing = false;
         clickAmount = 2f;
         targetRenderer = GetComponent<Renderer>();
     }
@@ -28,16 +30,31 @@ public class JellyfishClickFeeding : MonoBehaviour
         );
     }
 
+
     private void OnMouseDown()
     {
-       
+        if (resizing == true)
+        {
+            LeanTween.cancel(gameObject);
+            resizing = false;
+        }
+
+        if (resizing == false)
+        {
             if (Input.GetMouseButtonDown(0))
             {
-            LeanTween.scale(gameObject, new Vector3(transform.localScale.x *1.1f, transform.localScale.y * 1.1f, transform.localScale.z * 1.1f), 1f).setEase(LeanTweenType.punch);
-            print("Feeding click detected");
+                resizing = true;
+                LeanTween.scale(gameObject, new Vector3(transform.localScale.x * 1.1f, transform.localScale.y * 1f, transform.localScale.z * 1f), 0.5f).setEase(LeanTweenType.punch).setOnComplete(delegate ()
+                {
+                    resizing = false;
+                });
                 Instantiate(food, transform.position, transform.rotation);
-                clickAmount += 0.001f/transform.localScale.x;
-            }
+                clickAmount += 0.001f / transform.localScale.x;
 
+            }
+        }
+
+
+        
     }
 }

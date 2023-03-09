@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PopUpUISCnew : MonoBehaviour
 {
-    public GameObject targetCanvas;
+    //public GameObject targetCanvas;
     public delegate void getMethodfromCaller();
     public getMethodfromCaller GetMethodfromCaller;
 
@@ -17,7 +17,7 @@ public class PopUpUISCnew : MonoBehaviour
 
     public void delete()
     {
-        targetCanvas.SetActive(true);
+        //targetCanvas.SetActive(true);
         Destroy(gameObject);
     }
 

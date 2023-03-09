@@ -27,12 +27,19 @@ public class NewNewTargetMovement : MonoBehaviour
     Vector3 pointC;
 
 
+    public Camera mymainCamera;
+    Vector3 screenPosition;
+
     private void Start()
     {
+        
+        screenPosition = mymainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Vector3.Distance(transform.position, mymainCamera.transform.position)));
         pastTime = 0.1f;
         timeToMove = Random.Range(timeToMoveMin, timeToMoveMax);
         naturalStateCoord();
         jellyfishstatusHunger = followingObject.GetComponent<JellyfishStatusHunger>();
+
+        movingLimitX = screenPosition.x;
     }
 
     public void FixedUpdate()
@@ -106,6 +113,8 @@ public class NewNewTargetMovement : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawCube(new Vector3(movingLimitX, -movingLimitY, -movingLimitZ), Vector3.one);
 
+        Gizmos.color = Color.green;
+        Gizmos.DrawCube(screenPosition,Vector3.one);
     }
 
     void HungryStateCoord()

@@ -64,7 +64,7 @@ public class JellyfishListUI : MonoBehaviour
                 print("InstancingButtons");
                 GOtemp = Instantiate(buttonTemplate, transform);
                 GOtemp.GetComponent<JellyfishButtonCS>().targetObject = go;
-                GOtemp.GetComponent<JellyfishButtonCS>().GetComponent<JellyfishButtonCS>().parentCanvas = POPUPKeepingUI;
+//                GOtemp.GetComponent<JellyfishButtonCS>().GetComponent<JellyfishButtonCS>().parentCanvas = POPUPKeepingUI;
 
       }
     }

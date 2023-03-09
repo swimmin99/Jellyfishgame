@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jellName: JellyfishA
   jeliDescription: The first Jellyfish I've made
+  keyboardInputPrefab: {fileID: 2663889900385857636, guid: c16823040c88644b9b3d4d26f54fced4,
+    type: 3}
 --- !u!1 &3212141470554647394
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,3 +624,4 @@ MonoBehaviour:
   food: {fileID: 5749657520599989619, guid: 43b14ade17b344b59a2627a2944caf13, type: 3}
   clickAmount: 0
   addedSize: 0
+  resizing: 0

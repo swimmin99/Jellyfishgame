@@ -15,7 +15,7 @@ public class JellyfishClickFeeding : MonoBehaviour
     void Start()
     {
         //resizing = false;
-        clickAmount = 2f;
+        clickAmount = 1f;
         targetRenderer = GetComponent<Renderer>();
     }
 

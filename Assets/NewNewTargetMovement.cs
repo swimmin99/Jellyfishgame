@@ -17,9 +17,8 @@ public class NewNewTargetMovement : MonoBehaviour
 
     public float speed = 1.0f;
 
-    public float movingLimitX;
-    public float movingLimitY;
-    public float movingLimitZ;
+    Vector3 movingLimit;
+
 
     Vector3 location;
     Vector3 pointA;
@@ -27,19 +26,19 @@ public class NewNewTargetMovement : MonoBehaviour
     Vector3 pointC;
 
 
-    public Camera mymainCamera;
-    Vector3 screenPosition;
+    
 
     private void Start()
     {
-        
-        screenPosition = mymainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Vector3.Distance(transform.position, mymainCamera.transform.position)));
+        movingLimit = new Vector3(GameObject.FindGameObjectWithTag("StageController").GetComponent<prototypeStageController>().movingLimitX,
+                                    GameObject.FindGameObjectWithTag("StageController").GetComponent<prototypeStageController>().movingLimitY,
+                                    GameObject.FindGameObjectWithTag("StageController").GetComponent<prototypeStageController>().movingLimitZ);
+
+
         pastTime = 0.1f;
         timeToMove = Random.Range(timeToMoveMin, timeToMoveMax);
         naturalStateCoord();
         jellyfishstatusHunger = followingObject.GetComponent<JellyfishStatusHunger>();
-
-        movingLimitX = screenPosition.x;
     }
 
     public void FixedUpdate()
@@ -67,7 +66,6 @@ public class NewNewTargetMovement : MonoBehaviour
             }
 
         }
-
     }
 
 
@@ -79,9 +77,10 @@ public class NewNewTargetMovement : MonoBehaviour
         pointB = new Vector3(transform.position.x + Random.Range(-1 * range, range),
             transform.position.y + Random.Range(-1 * range, range),
             transform.position.z + Random.Range(-1 * range, range));
-        pointC = new Vector3(Random.Range(-movingLimitX, movingLimitX),
-                        Random.Range(-movingLimitY, movingLimitY),
-                        Random.Range(-movingLimitZ, movingLimitZ));
+
+        pointC = new Vector3(Random.Range(-movingLimit.x * 0.8f, movingLimit.x * 0.8f),
+                        Random.Range(-movingLimit.y * 0.8f, movingLimit.y * 0.8f),
+                        Random.Range(-movingLimit.y * 0.8f, movingLimit.y * 0.8f));
 
     }
 
@@ -91,30 +90,11 @@ public class NewNewTargetMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(pointA, 0.1f);
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.green;
         Gizmos.DrawSphere(pointB, 0.1f);
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.blue;
         Gizmos.DrawSphere(pointC, 0.1f);
 
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(new Vector3(-1 * movingLimitX, movingLimitY, movingLimitZ), Vector3.one);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(new Vector3(movingLimitX, movingLimitY, movingLimitZ), Vector3.one);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(new Vector3(-1 * movingLimitX, movingLimitY, -movingLimitZ), Vector3.one);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(new Vector3(movingLimitX, movingLimitY, -movingLimitZ), Vector3.one);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(new Vector3(-1 * movingLimitX, -movingLimitY, movingLimitZ), Vector3.one);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(new Vector3(movingLimitX, -movingLimitY, movingLimitZ), Vector3.one);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(new Vector3(-1 * movingLimitX, -movingLimitY, -movingLimitZ), Vector3.one);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(new Vector3(movingLimitX, -movingLimitY, -movingLimitZ), Vector3.one);
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawCube(screenPosition,Vector3.one);
     }
 
     void HungryStateCoord()

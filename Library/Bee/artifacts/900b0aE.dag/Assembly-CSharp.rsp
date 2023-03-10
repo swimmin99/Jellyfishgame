@@ -436,6 +436,7 @@
 "Assets/StainController.cs"
 "Assets/StainCreator.cs"
 "Assets/statUIsc.cs"
+"Assets/tankSizerSc.cs"
 "Assets/targetMovement.cs"
 "Assets/ToggleGoupController.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"

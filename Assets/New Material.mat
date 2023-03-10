@@ -73,12 +73,12 @@ Material:
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
-    - _Amount: 1.02
+    - _Amount: -8.96
     - _BlendMode: 0
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
     - _CullModeForward: 2
-    - _DepthFade: 12.48
+    - _DepthFade: 15
     - _DepthOffsetEnable: 0
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
@@ -88,10 +88,10 @@ Material:
     - _EnableFogOnTransparent: 1
     - _FoamDepth: 3
     - _FoamNoiseScale: 75.89
-    - _FoamRippleSpeed: 0.1
+    - _FoamRippleSpeed: 0.01
     - _FoamScreenRatio: -1
     - _NormalMapTiling: 2
-    - _NormalStrength: 1
+    - _NormalStrength: 0.167
     - _OpaqueCullMode: 2
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -124,9 +124,9 @@ Material:
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
     - _WaterNoiseScale: 0.04
-    - _WaveFrequency: 0.76
+    - _WaveFrequency: 18.98
     - _WaveHeight: 0.16
-    - _WaveSpeed: 0.05
+    - _WaveSpeed: 0.01
     - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
@@ -136,7 +136,7 @@ Material:
     - _Color2: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FoamColor: {r: 0.50655043, g: 0.5082565, b: 0.509434, a: 1}
+    - _FoamColor: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 0.85882354}
   m_BuildTextureStacks: []
 --- !u!114 &3147715986091188729
 MonoBehaviour:

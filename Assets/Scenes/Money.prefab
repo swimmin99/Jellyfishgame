@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 560202574541940364}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 561442214699602440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.44, y: -1.89, z: 0.756371}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 565627642769253956}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2156481875016367615}
   - component: {fileID: 579896734342675654}
   - component: {fileID: 6420203398486507669}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: BetterCrystal01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -22,6 +22,8 @@ public class prototypeStageController : MonoBehaviour
     public float localScaleZ;
 
     public GameObject mapObjectPrefab;
+    public Material mapFloorMaterial;
+
 
     private void Awake()
     {
@@ -39,7 +41,7 @@ public class prototypeStageController : MonoBehaviour
         GameObject floor = Instantiate(wallPrefab, gameObject.transform);
         floor.transform.position = new Vector3(0, -movingLimitY, localScaleZ);
         floor.transform.localScale = new Vector3(15, 1, 15);
-
+        floor.GetComponent<MeshRenderer>().material = mapFloorMaterial;
 
         GameObject leftWall = Instantiate(wallPrefab, gameObject.transform);
         leftWall.transform.position = new Vector3(-2 * movingLimitX, 0, localScaleZ);

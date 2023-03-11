@@ -9,7 +9,8 @@ public class Jellyfish_Speicification : MonoBehaviour
     public GameObject keyboardInputPrefab;
     // Start is called before the first frame update
     private inputUISC inputComponenet;
-
+    public int sellPrice;
+    public int originalPrice;
 
     public void callInputString()
     {
@@ -33,6 +34,6 @@ public class Jellyfish_Speicification : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        sellPrice = originalPrice + (int)(Mathf.Floor((gameObject.transform.Find("JLOBJ").transform.Find("JLFeature").GetComponent<JellyfishClickFeeding>().addedSize)/10))*10;
     }
 }

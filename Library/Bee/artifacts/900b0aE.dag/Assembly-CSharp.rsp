@@ -369,6 +369,9 @@
 -r:"Library/Bee/artifacts/900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/AlertCS.cs"
+"Assets/ColorRandomizationCS.cs"
+"Assets/FeedingUpgradeCS.cs"
 "Assets/Jettelly Assets/Jettelly Simple Blur UI/Script/UIBlurController.cs"
 "Assets/LeanTween/Examples/Archived/OldGUIExamplesCS.cs"
 "Assets/LeanTween/Examples/Archived/TestingPunch.cs"
@@ -441,6 +444,7 @@
 "Assets/Scripts/UIrelatedSC/ToggleGoupController.cs"
 "Assets/testMaterialAdjSC.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
+"Assets/UIfadeINOUT.cs"
 -langversion:9.0
 
 /deterministic

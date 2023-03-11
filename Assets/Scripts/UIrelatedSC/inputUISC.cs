@@ -16,15 +16,56 @@ public class inputUISC : MonoBehaviour
     public TabButton yesButton;
     public TabButton noButton;
 
+    public GameObject blankWarning;
+    public GameObject duplicateWarning;
     // Start is called before the first frame update
+
+    public bool checkNullInput()
+    {
+        
+        if (string.IsNullOrWhiteSpace(inputField.text))
+        {
+            blankWarning.SetActive(true);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
 
     public void featureStart()
     {
-        if (GetMethodfromCaller != null)
+        duplicateWarning.SetActive(false);
+        blankWarning.SetActive(false);
+
+        if (checkNullInput() == false && DuplicateNameCheck() == false)
         {
-            GetMethodfromCaller(inputField.text);
-            print("pop up executed");
+
+            if (GetMethodfromCaller != null)
+            {
+                GetMethodfromCaller(inputField.text);
+                print("pop up executed");
+
+                delete();
+            }
+
         }
+    }
+
+    public bool DuplicateNameCheck() {
+
+        if (findName(inputField.text) == true)
+        {
+            duplicateWarning.SetActive(true);
+            return true;
+
+        } else
+            return false;
+
+
     }
 
     
@@ -35,7 +76,40 @@ public class inputUISC : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private bool findName(string name)
+    {
+        GameObject parentObj = GameObject.FindGameObjectWithTag("JellyfishListController");
+        if (parentObj.transform)
+        {
+            List<GameObject> tag_targets = new List<GameObject>();
 
+            if (FindDescendantsWithName(parentObj.transform, "Targets", tag_targets, name) == true)
+                return true;
+            else
+                return false;
+
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+
+    private bool FindDescendantsWithName(Transform parent, string tag, List<GameObject> list, string name)
+    {
+        bool isFound = false;
+        foreach (Transform child in parent)
+        {
+            if (child.gameObject.tag == "JellyfishTag" && child.gameObject.GetComponent<Jellyfish_Speicification>().jellName == name)
+            {
+                isFound = true;
+            }
+        }
+
+        return isFound;
+    }
 
 
     // Checks if there is anything entered into the input field.
@@ -57,5 +131,5 @@ public class inputUISC : MonoBehaviour
     //    mainInputField.onSubmit.AddListener(delegate { LockInput(mainInputField); });
     //}
 
-    
+
 }

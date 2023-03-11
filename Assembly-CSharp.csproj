@@ -64,6 +64,7 @@
     <Compile Include="Assets/LeanTween/Framework/LTSeq.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingUnitTests.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralUISpace.cs" />
+    <Compile Include="Assets/UIfadeINOUT.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/PopUpUISCnew.cs" />
     <Compile Include="Assets/Scripts/JellyfishRelatedSC/New2TargetMovement.cs" />
     <Compile Include="Assets/Scripts/JellyfishRelatedSC/JellyfishKeepingTrack.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Assets/Scripts/UIrelatedSC/ToggleGoupController.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanAudio.cs" />
     <Compile Include="Assets/Scripts/JellyfishRelatedSC/jellyfishMovement.cs" />
+    <Compile Include="Assets/testMaterialAdjSC.cs" />
     <Compile Include="Assets/Scripts/JellyfishRelatedSC/Jellyfish_Speicification.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/PopUpUIScript.cs" />
     <Compile Include="Assets/Scripts/JellyfishRelatedSC/targetMovement.cs" />
@@ -127,7 +129,9 @@
     <Compile Include="Assets/LeanTween/Examples/Archived/TestingRigidbodyCS.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/DockUIScrollDown.cs" />
-    <Compile Include="Assets/testMaterialAdjSC.cs" />
+    <Compile Include="Assets/AlertCS.cs" />
+    <Compile Include="Assets/ColorRandomizationCS.cs" />
+    <Compile Include="Assets/FeedingUpgradeCS.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

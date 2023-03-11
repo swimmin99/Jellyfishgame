@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,13 @@ public class JellyfishButtonCS : MonoBehaviour
     //public GameObject parentCanvas;
     public GameObject popUpUIPrefab;
     public GameObject selfOB;
-
+    public GameObject stageControllerObj;
 
     public int buttonNumber;
     public GameObject targetObject;
     public TMP_Text targetObj_Name;
     public TMP_Text targetObj_Description;
+
 
     public Slider sizeSlider;
     public float sizePercentage;
@@ -26,17 +28,17 @@ public class JellyfishButtonCS : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        stageControllerObj = GameObject.FindGameObjectWithTag("StageController");
         targetObj_Name.text = targetObject.GetComponent<Jellyfish_Speicification>().jellName;
         maxSize = targetObject.GetComponentInChildren<JellyfishClickFeeding>().maxSize;
         minSize = targetObject.GetComponentInChildren<JellyfishClickFeeding>().minSize;
-        currentSize = targetObject.GetComponentInChildren<JellyfishClickFeeding>().addedSize;
-        sizePercentage = currentSize / maxSize-minSize;
-        //targetObj_Description.text = "SIZE :" + targetObject.GetComponentInChildren<JellyfishClickFeeding>().addedSize.ToString();
+
         //        check = false;
     }
 
     public void deleteTargetObject()
     {
+        stageControllerObj.GetComponent<prototypeStageController>().money += targetObject.GetComponent<Jellyfish_Speicification>().sellPrice;
         Destroy(targetObject);
         print("deleteJellyfish");
         Destroy(selfOB);
@@ -44,14 +46,29 @@ public class JellyfishButtonCS : MonoBehaviour
 
     private void Update()
     {
-        sizeSlider.GetComponent<Slider>().value = sizePercentage;
+        displaySize();
+    }
+
+    private void displaySize()
+    {
+        currentSize = targetObject.GetComponentInChildren<JellyfishClickFeeding>().addedSize;
+        sizePercentage = (currentSize - minSize) / (maxSize - minSize);
+
+        targetObj_Description.text = "크기:" + Math.Round((sizePercentage * 100) * 100) / 100 + "%";
     }
 
 
-    public void DeleteButtonClicked()
+    //private void Update()
+        //{
+        //    sizeSlider.GetComponent<Slider>().value = sizePercentage;
+        //}
+
+
+        public void DeleteButtonClicked()
     {
         GameObject popup;
         popup = Instantiate(popUpUIPrefab);
+        popup.GetComponent<PopUpUISCnew>().CautionString = targetObject.GetComponent<Jellyfish_Speicification>().jellName + "\n판매금액 : " + targetObject.GetComponent<Jellyfish_Speicification>().sellPrice + "J\n" + "판매하시겠습니까?" ;
         //popup.GetComponent<PopUpUISCnew>().targetCanvas = parentCanvas;
         popup.GetComponent<PopUpUISCnew>().GetMethodfromCaller = deleteTargetObject;
         StartCoroutine(WaitForIt());

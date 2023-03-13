@@ -24,6 +24,7 @@ public class prototypeStageController : MonoBehaviour
     public GameObject mapObjectPrefab;
     public Material mapFloorMaterial;
 
+    public float foodRatio;
 
     private void Awake()
     {
@@ -63,6 +64,9 @@ public class prototypeStageController : MonoBehaviour
         mymainCamera.transform.position = new Vector3(mymainCamera.transform.position.x, mymainCamera.transform.position.y, mymainCamera.transform.position.z + mymainCamera.transform.position.z / 2);
         mymainCamera.fieldOfView = 50;
 
+
+
+
         GameObject mapObject = Instantiate(mapObjectPrefab, gameObject.transform);
         mapObject.transform.localScale = new Vector3(screenPosition.x * 2f, screenPosition.y, movingLimitZ);
         mapObject.transform.position = new Vector3(0, floor.transform.position.y + mapObject.transform.localScale.y/2f, backWall.transform.position.z - 1);
@@ -73,7 +77,7 @@ public class prototypeStageController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        foodRatio = 1f;
         isFeeding = false;
 
     }

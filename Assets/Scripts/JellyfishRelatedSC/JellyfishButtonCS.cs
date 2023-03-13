@@ -51,10 +51,7 @@ public class JellyfishButtonCS : MonoBehaviour
 
     private void displaySize()
     {
-        currentSize = targetObject.GetComponentInChildren<JellyfishClickFeeding>().addedSize;
-        sizePercentage = (currentSize - minSize) / (maxSize - minSize);
-
-        targetObj_Description.text = "크기:" + Math.Round((sizePercentage * 100) * 100) / 100 + "%";
+        targetObj_Description.text = "크기:" + targetObject.GetComponentInChildren<JellyfishClickFeeding>().sizePercentage+"%";
     }
 
 

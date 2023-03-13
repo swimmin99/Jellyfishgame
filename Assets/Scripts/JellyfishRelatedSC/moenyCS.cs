@@ -14,6 +14,10 @@ public class moenyCS : MonoBehaviour
     public Color MouseOnColor1;
     public Color MouseOffColor2;
     bool mouseOnTarget;
+
+    public int minimumMoney;
+    public int addedMoneyRatio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +32,12 @@ public class moenyCS : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
-            
+    {
+        print(minimumMoney * addedMoneyRatio);
+        print(minimumMoney + " " + addedMoneyRatio);
         if (Input.GetMouseButtonDown(0)&&mouseOnTarget)
             {
-                moneyStageComponenet.money += 10;
+                moneyStageComponenet.money += minimumMoney * addedMoneyRatio;
                 print("money click detected");
             Destroy(transform.parent.gameObject);
         }

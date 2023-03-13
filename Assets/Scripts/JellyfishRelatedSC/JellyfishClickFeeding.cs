@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,12 +13,16 @@ public class JellyfishClickFeeding : MonoBehaviour
     public float addedSize;
     public float minSize = 1f;
     public float maxSize = 3f;
+    public float feedingValue;
 
+    public int sizePercentage;
+    public float sizeRatio;
 
     public bool resizing;
     void Start()
     {
         //resizing = false;
+        feedingValue = GameObject.FindGameObjectWithTag("StageController").GetComponent<prototypeStageController>().foodRatio;
         clickAmount = 1f;
         targetRenderer = GetComponent<Renderer>();
         food.GetComponent<ParticleSystem>().Stop();
@@ -32,6 +37,10 @@ public class JellyfishClickFeeding : MonoBehaviour
         (
            addedSize, addedSize, addedSize
         );
+
+        
+        sizeRatio = (addedSize - minSize) / (maxSize - minSize);
+        sizePercentage = (int)Math.Round((sizeRatio * 100) * 100) / 100;
     }
 
 
@@ -50,7 +59,7 @@ public class JellyfishClickFeeding : MonoBehaviour
                 resizing = true;
 
                 
-                    LeanTween.scale(gameObject, new Vector3(transform.localScale.x * 1.1f, transform.localScale.y * 1.1f, transform.localScale.z * 1.1f), 0.5f).setEase(LeanTweenType.punch).setOnComplete(delegate ()
+                    LeanTween.scale(gameObject, new Vector3(transform.localScale.x * 1f, transform.localScale.y * 1.1f, transform.localScale.z * 1.1f), 0.5f).setEase(LeanTweenType.punch).setOnComplete(delegate ()
                     {
                         resizing = false;
                     });
@@ -64,7 +73,7 @@ public class JellyfishClickFeeding : MonoBehaviour
                     //    food.GetComponent<ParticleSystem>().Play();
 
                     //}
-                    clickAmount += 0.001f / transform.localScale.x;
+                    clickAmount += 0.001f / transform.localScale.x / transform.localScale.x * (feedingValue==0?1:feedingValue);
                 }
                 
 

@@ -9,11 +9,10 @@ public class FeedingUpgradeCS : MonoBehaviour
     public int Price;
 
     public TMP_Text PriceUI;
+    public TMP_Text ratioUI;
+
     public GameObject popUpUIPrefab;
     public GameObject AlertPrefab;
-
-    public Color color1;
-    public Color color2;
 
 
     public bool displayOne;
@@ -36,7 +35,7 @@ public class FeedingUpgradeCS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        ratioUI.text = (((int)stageController.GetComponent<prototypeStageController>().foodRatio).ToString()) + "X";
     }
 
     public delegate void feature();
@@ -48,7 +47,7 @@ public class FeedingUpgradeCS : MonoBehaviour
         {
             print("buy successed");
             stageController.money -= Price;
-           
+            stageController.GetComponent<prototypeStageController>().foodRatio *= 2;
         }
         else
         {

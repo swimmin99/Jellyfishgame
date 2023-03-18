@@ -12,6 +12,9 @@ public class Jellyfish_Speicification : MonoBehaviour
     public int sellPrice;
     public int originalPrice;
 
+    public Color myColor1;
+    public Color myColor2;
+
     public void callInputString()
     {
         Instantiate(keyboardInputPrefab).GetComponent<inputUISC>().GetMethodfromCaller = changeName;

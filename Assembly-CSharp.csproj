@@ -64,6 +64,7 @@
     <Compile Include="Assets/AlertCS.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTSeq.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingUnitTests.cs" />
+    <Compile Include="Assets/Scripts/JellyfishListSave.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralUISpace.cs" />
     <Compile Include="Assets/UIfadeINOUT.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/PopUpUISCnew.cs" />
@@ -104,8 +105,10 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralCameraShake.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/statUIsc.cs" />
     <Compile Include="Assets/saveGateway.cs" />
+    <Compile Include="Assets/Scripts/JellyfishSpecEntry.cs" />
     <Compile Include="Assets/Scripts/StainCreator.cs" />
     <Compile Include="Assets/LeanTween/Examples/Archived/TestingPunch.cs" />
+    <Compile Include="Assets/saveTestObject.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/ToggleGoupController.cs" />
     <Compile Include="Assets/LeanTween/Framework/LeanAudio.cs" />
     <Compile Include="Assets/Scripts/JellyfishRelatedSC/jellyfishMovement.cs" />
@@ -127,17 +130,19 @@
     <Compile Include="Assets/LeanTween/Framework/LeanTest.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/ListJellyfishCreatePanel.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSpline2d.cs" />
+    <Compile Include="Assets/saveController.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplinePerformance.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/JellyfishStatusUI.cs" />
     <Compile Include="Assets/ColorRandomizationCS.cs" />
+    <Compile Include="Assets/saveTestUISC.cs" />
     <Compile Include="Assets/FeedingUpgradeCS.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralBasic.cs" />
     <Compile Include="Assets/Scripts/JellyfishRelatedSC/MouseToScreenClick.cs" />
     <Compile Include="Assets/LeanTween/Examples/Archived/TestingRigidbodyCS.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/DockUIScrollDown.cs" />
-    <Compile Include="Assets/Scripts/JellyfishSpecEntry.cs" />
-    <Compile Include="Assets/saveTestObject.cs" />
+    <Compile Include="Assets/jellyfishListRefresher.cs" />
+    <Compile Include="Assets/jellyfishLoadController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

@@ -55,6 +55,8 @@ public class ShopJellyBuyButton : MonoBehaviour
             temp.transform.position = new Vector3(0, 0, 0);
             temp.GetComponent<Jellyfish_Speicification>().callInputString();
             temp.GetComponent<Jellyfish_Speicification>().originalPrice = Price;
+            temp.GetComponent<Jellyfish_Speicification>().myColor1 = color1;
+            temp.GetComponent<Jellyfish_Speicification>().myColor2 = color2;
 
             temp.transform.Find("JLOBJ").GetComponentInChildren<MeshRenderer>().material.SetColor("_Color1", ChangeHDRColorIntensity(color1, 0.5f));
             temp.transform.Find("JLOBJ").GetComponentInChildren<MeshRenderer>().material.SetColor("_Color2", ChangeHDRColorIntensity(color2, 4));

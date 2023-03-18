@@ -47,7 +47,7 @@ public class backGroundBuyButtonCS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(RenderSettings.fogColor);
+//        print(RenderSettings.fogColor);
     }
 
     public void onClickBuy()

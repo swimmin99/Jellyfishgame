@@ -23,6 +23,10 @@ public class JellyfishButtonCS : MonoBehaviour
     public float maxSize;
     public float minSize;
     public float currentSize;
+
+
+    public Image color1UI;
+    public Image color2UI;
 //    bool check;
 
     // Start is called before the first frame update
@@ -52,16 +56,19 @@ public class JellyfishButtonCS : MonoBehaviour
     private void displaySize()
     {
         targetObj_Description.text = "크기:" + targetObject.GetComponentInChildren<JellyfishClickFeeding>().sizePercentage+"%" +"/"+ targetObject.GetComponent<Jellyfish_Speicification>().myStatus;
+        color1UI.color = new Color( targetObject.GetComponent<Jellyfish_Speicification>().myColor1.r, targetObject.GetComponent<Jellyfish_Speicification>().myColor1.g, targetObject.GetComponent<Jellyfish_Speicification>().myColor1.b, 1f);
+        color2UI.color = new Color(targetObject.GetComponent<Jellyfish_Speicification>().myColor2.r, targetObject.GetComponent<Jellyfish_Speicification>().myColor2.g, targetObject.GetComponent<Jellyfish_Speicification>().myColor2.b, 1f);
+
     }
 
 
     //private void Update()
-        //{
-        //    sizeSlider.GetComponent<Slider>().value = sizePercentage;
-        //}
+    //{
+    //    sizeSlider.GetComponent<Slider>().value = sizePercentage;
+    //}
 
 
-        public void DeleteButtonClicked()
+    public void DeleteButtonClicked()
     {
         GameObject popup;
         popup = Instantiate(popUpUIPrefab);

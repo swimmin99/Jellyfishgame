@@ -35,7 +35,9 @@ public class FeedingUpgradeCS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ratioUI.text = (((int)stageController.GetComponent<prototypeStageController>().foodRatio).ToString()) + "X";
+        ratioUI.text = ((((int)stageController.GetComponent<prototypeStageController>().foodRatio) * 2).ToString()) + "X";
+        PriceUI.text = Price.ToString() + "X";
+
     }
 
     public delegate void feature();
@@ -48,6 +50,7 @@ public class FeedingUpgradeCS : MonoBehaviour
             print("buy successed");
             stageController.money -= Price;
             stageController.GetComponent<prototypeStageController>().foodRatio *= 2;
+            Price *= 2;
         }
         else
         {

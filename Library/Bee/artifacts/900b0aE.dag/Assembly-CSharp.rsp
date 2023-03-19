@@ -380,6 +380,7 @@
 "Assets/backGroundBuyButtonCS.cs"
 "Assets/CloseButtonSC.cs"
 "Assets/ColorRandomizationCS.cs"
+"Assets/DeveloperMod.cs"
 "Assets/FeedingUpgradeCS.cs"
 "Assets/fileHandler.cs"
 "Assets/InputEntry.cs"

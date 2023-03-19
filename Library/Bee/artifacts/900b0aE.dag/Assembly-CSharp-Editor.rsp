@@ -395,7 +395,6 @@
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEngine.TestRunner.ref.dll"
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
-"Assets/Jettelly Assets/Jettelly Simple Blur UI/Editor/UIBlurEditor.cs"
 "Assets/LeanTween/Editor/LeanTweenDocumentationEditor.cs"
 "Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs"
 -langversion:9.0

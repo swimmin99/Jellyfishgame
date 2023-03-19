@@ -57,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" />
-    <Compile Include="Assets/Jettelly Assets/Jettelly Simple Blur UI/Editor/UIBlurEditor.cs" />
     <Compile Include="Assets/LeanTween/Editor/LeanTweenDocumentationEditor.cs" />
   </ItemGroup>
   <ItemGroup>

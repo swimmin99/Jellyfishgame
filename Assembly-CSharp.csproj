@@ -87,7 +87,6 @@
     <Compile Include="Assets/Scripts/foodCS.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacy.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/TestingZLegacyExt.cs" />
-    <Compile Include="Assets/Jettelly Assets/Jettelly Simple Blur UI/Script/UIBlurController.cs" />
     <Compile Include="Assets/Scripts/JellyfishRelatedSC/NewNewTargetMovement.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/ShopJellyBuyButton.cs" />
     <Compile Include="Assets/Scripts/JellyfishRelatedSC/jellyfishMovementNew.cs" />
@@ -137,6 +136,7 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplinePerformance.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/JellyfishStatusUI.cs" />
     <Compile Include="Assets/ColorRandomizationCS.cs" />
+    <Compile Include="Assets/DeveloperMod.cs" />
     <Compile Include="Assets/saveTestUISC.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/stageSpecSave.cs" />
     <Compile Include="Assets/FeedingUpgradeCS.cs" />
@@ -146,7 +146,6 @@
     <Compile Include="Assets/LeanTween/Examples/Archived/TestingRigidbodyCS.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/DockUIScrollDown.cs" />
-    <Compile Include="Assets/DeveloperMod.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
@@ -160,9 +159,7 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" />
     <None Include="Assets/LeanTween/License.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" />
-    <None Include="Assets/Jettelly Assets/Jettelly Simple Blur UI/License.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets/Jettelly Assets/Jettelly Simple Blur UI/Material/HLSL/BluredPixel.hlsl" />
     <None Include="Assets/Scenes/glassyfrosty.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" />
     <None Include="Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" />

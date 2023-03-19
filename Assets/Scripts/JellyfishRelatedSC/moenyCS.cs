@@ -33,8 +33,8 @@ public class moenyCS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(minimumMoney * addedMoneyRatio);
-        print(minimumMoney + " " + addedMoneyRatio);
+        //print(minimumMoney * addedMoneyRatio);
+        //print(minimumMoney + " " + addedMoneyRatio);
         if (Input.GetMouseButtonDown(0)&&mouseOnTarget)
             {
                 moneyStageComponenet.money += minimumMoney * addedMoneyRatio;

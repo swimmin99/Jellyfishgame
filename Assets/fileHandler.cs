@@ -20,7 +20,7 @@ public static class fileHandler
 
         if (string.IsNullOrEmpty(content) || content == "{}")
         {
-            return new List<T>();
+            return null;
         }
 
         List<T> res = JsonHelper.FromJson<T>(content).ToList();

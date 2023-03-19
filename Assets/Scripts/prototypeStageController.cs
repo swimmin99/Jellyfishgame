@@ -5,11 +5,14 @@ using TMPro;
 
 public class prototypeStageController : MonoBehaviour
 {
+    public int isFirst = 1;
+
     public int money = 100;
     public bool isFeeding;
     public GameObject foodParticle;
     public TMP_Text MoneyGUIObject;
 
+    public int stageDecor = 1;
 
     public GameObject wallPrefab;
     public GameObject waterPrefab;
@@ -26,8 +29,12 @@ public class prototypeStageController : MonoBehaviour
 
     public float foodRatio;
 
+    public Color fogColor;
+
+
     private void Awake()
     {
+        
         screenPosition = mymainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Vector3.Distance(transform.position, mymainCamera.transform.position)));
         movingLimitX = screenPosition.x;
         movingLimitY = screenPosition.y;
@@ -79,7 +86,10 @@ public class prototypeStageController : MonoBehaviour
     {
         foodRatio = 1f;
         isFeeding = false;
-
+        if (isFirst == 1)
+        {
+            fogColor = new Color(0.095f, 0.109f, 0.396f, 0.537f);
+        }
     }
 
     // Update is called once per frame

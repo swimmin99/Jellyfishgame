@@ -76,6 +76,7 @@
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplineEndless.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathBezier.cs" />
     <Compile Include="Assets/Scripts/PrototypeStageCleaningController.cs" />
+    <Compile Include="Assets/jellyfishListRefresher.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathSplines.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralEventsListeners.cs" />
     <Compile Include="Assets/Scripts/PlanktonCS.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets/Scripts/JellyfishRelatedSC/jellyfishMovementNew.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/PathBezier2d.cs" />
     <Compile Include="Assets/Scripts/JellyfishRelatedSC/JellyfishClickFeeding.cs" />
+    <Compile Include="Assets/jellyfishLoadController.cs" />
     <Compile Include="Assets/LeanTween/Framework/LTDescrOptional.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralEasingTypes.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/GeneralSequencer.cs" />
@@ -141,8 +143,9 @@
     <Compile Include="Assets/LeanTween/Examples/Archived/TestingRigidbodyCS.cs" />
     <Compile Include="Assets/LeanTween/Examples/Scripts/Following.cs" />
     <Compile Include="Assets/Scripts/UIrelatedSC/DockUIScrollDown.cs" />
-    <Compile Include="Assets/jellyfishListRefresher.cs" />
-    <Compile Include="Assets/jellyfishLoadController.cs" />
+    <Compile Include="Assets/Scripts/UIrelatedSC/stageSpecSave.cs" />
+    <Compile Include="Assets/TutorialSC.cs" />
+    <Compile Include="Assets/CloseButtonSC.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

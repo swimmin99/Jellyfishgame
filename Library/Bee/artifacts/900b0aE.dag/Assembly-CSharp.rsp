@@ -378,6 +378,7 @@
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
 "Assets/AlertCS.cs"
 "Assets/backGroundBuyButtonCS.cs"
+"Assets/CloseButtonSC.cs"
 "Assets/ColorRandomizationCS.cs"
 "Assets/FeedingUpgradeCS.cs"
 "Assets/fileHandler.cs"
@@ -458,10 +459,12 @@
 "Assets/Scripts/UIrelatedSC/PopUpUISCnew.cs"
 "Assets/Scripts/UIrelatedSC/PopUpUIScript.cs"
 "Assets/Scripts/UIrelatedSC/ShopJellyBuyButton.cs"
+"Assets/Scripts/UIrelatedSC/stageSpecSave.cs"
 "Assets/Scripts/UIrelatedSC/statUIsc.cs"
 "Assets/Scripts/UIrelatedSC/ToggleGoupController.cs"
 "Assets/testMaterialAdjSC.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
+"Assets/TutorialSC.cs"
 "Assets/UIfadeINOUT.cs"
 -langversion:9.0
 

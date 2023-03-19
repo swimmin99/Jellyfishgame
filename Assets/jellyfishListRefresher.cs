@@ -5,6 +5,7 @@ using UnityEngine;
 public class jellyfishListRefresher : MonoBehaviour
 {
     public Transform parentObj;
+    public prototypeStageController stageController;
 
     public float timer;
     private float limitTime = 10f;
@@ -14,6 +15,7 @@ public class jellyfishListRefresher : MonoBehaviour
     void Start()
     {
         savingComponent = GetComponent<saveController>();
+        stageController = GameObject.FindGameObjectWithTag("StageController").GetComponent<prototypeStageController>();
     }
 
     // Update is called once per frame
@@ -22,12 +24,19 @@ public class jellyfishListRefresher : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > limitTime)
         {
-            SaveMethod(refresher());
-            timer = 0f;
+            Saver();
         }
 
 
     }
+
+    public void Saver()
+    {
+        SaveMethod(refresher());
+        stageSaveMethod();
+        timer = 0f;
+    }
+
 
     public List<GameObject> refresher()
     {
@@ -82,5 +91,13 @@ public class jellyfishListRefresher : MonoBehaviour
         savingComponent.overwriteToList(temp);
 
 
+    }
+
+
+    public void stageSaveMethod()
+    {
+        List<stageSpecSave> temp = new List<stageSpecSave>();
+        temp.Add(new stageSpecSave(stageController.isFirst, stageController.money, stageController.fogColor.r, stageController.fogColor.g, stageController.fogColor.b,stageController.fogColor.a, stageController.stageDecor));
+        savingComponent.overwriteToListStage(temp);
     }
 }

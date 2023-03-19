@@ -6,6 +6,8 @@ public class jellyfishLoadController : MonoBehaviour
 {
     public GameObject jellyProductPrefab;
     public GameObject jellyfishController;
+    public prototypeStageController stageController;
+
     public saveController saver;
     // Start is called before the first frame update
     void Start()
@@ -38,7 +40,17 @@ public class jellyfishLoadController : MonoBehaviour
         }
     }
 
+    public void stageSetter(List<stageSpecSave> entries)
+    {
+        if (entries != null)
+        {
+            stageController.money = entries[0].money;
+            stageController.isFirst = entries[0].isFirst;
+            stageController.stageDecor = entries[0].backgroundDecoID;
 
+            settingFogColor(new Color(entries[0].backgroundR, entries[0].backgroundG, entries[0].backgroundB, entries[0].backgroundA));
+        }
+    }
 
 
     private const byte k_MaxByteForOverexposedColor = 191; //internal Unity const 
@@ -63,6 +75,14 @@ public class jellyfishLoadController : MonoBehaviour
 
         // Return color
         return colorToRetun;
+    }
+
+    void settingFogColor(Color loadedColor)
+    {
+        print("bought");
+        RenderSettings.fogColor = loadedColor;
+        RenderSettings.fog = true;
+        stageController.fogColor = loadedColor;
     }
 
 }

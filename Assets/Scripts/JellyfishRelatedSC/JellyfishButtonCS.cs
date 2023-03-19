@@ -51,7 +51,7 @@ public class JellyfishButtonCS : MonoBehaviour
 
     private void displaySize()
     {
-        targetObj_Description.text = "크기:" + targetObject.GetComponentInChildren<JellyfishClickFeeding>().sizePercentage+"%";
+        targetObj_Description.text = "크기:" + targetObject.GetComponentInChildren<JellyfishClickFeeding>().sizePercentage+"%" +"/"+ targetObject.GetComponent<Jellyfish_Speicification>().myStatus;
     }
 
 

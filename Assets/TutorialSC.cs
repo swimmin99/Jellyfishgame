@@ -35,9 +35,10 @@ public class TutorialSC : MonoBehaviour
             tutorialStep++;
         switch (tutorialStep)
         {
-            case 1: display("환영합니다!"); break;
-            case 2: display("해파리를 분양받기 위해 상점 탭을 터치해주세요!"); break;
-            case 3: stageController.isFirst = 0; break;
+            case 1: display("해달 OT용 빌드" + '\n'+ "Ver3.0"); break;
+            case 2: display("환영합니다!" + '\n' + "인영님"); break;
+            case 3: display("상점에서 해파리를" + '\n' +"구입해 주세요!"); break;
+            case 4: stageController.isFirst = 0; Destroy(gameObject); break;
         }
 
     }

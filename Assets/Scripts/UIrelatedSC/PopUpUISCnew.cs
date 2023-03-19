@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PopUpUISCnew : MonoBehaviour
 {
@@ -11,8 +12,7 @@ public class PopUpUISCnew : MonoBehaviour
 
     public TMP_Text cautionWarning;
     public string CautionString;
-    public TabButton yesButton;
-    public TabButton noButton;
+
     // Start is called before the first frame update
 
     private void Start()

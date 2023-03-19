@@ -5,7 +5,7 @@ using UnityEngine;
 public class backGroundBuyButtonCS : MonoBehaviour
 {
     private int GlobalPrice;
-    private bool canBuy;
+//    private bool canBuy;
 
     public int backGroundNum;
     prototypeStageController stageController;
@@ -23,7 +23,7 @@ public class backGroundBuyButtonCS : MonoBehaviour
     
 
     void getSettingsForColor(int myPrice, Color myColor) {
-        bool Purchased = false;
+       // bool Purchased = false;
         GlobalPrice = myPrice;
         globalColor = myColor;
         BuyButtonClicked();
@@ -41,7 +41,7 @@ public class backGroundBuyButtonCS : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canBuy = false;
+//        canBuy = false;
         stageController = GameObject.FindGameObjectWithTag("StageController").GetComponent<prototypeStageController>();
     }
 

@@ -13,8 +13,7 @@ public class inputUISC : MonoBehaviour
     public TMP_InputField inputField;
 
     public string CautionString;
-    public TabButton yesButton;
-    public TabButton noButton;
+
 
     public GameObject blankWarning;
     public GameObject duplicateWarning;

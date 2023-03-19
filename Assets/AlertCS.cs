@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AlertCS : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class AlertCS : MonoBehaviour
     public TMP_Text cautionWarning;
 
     public string CautionString;
-    public TabButton yesButton;
+    //public TabButton yesButton;
 
     private void Start()
     {

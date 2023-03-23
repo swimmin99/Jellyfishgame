@@ -85,6 +85,23 @@ Ver 1.02 2023-02-27
 문제1 - 해결방안1 결과 : 물론 이전보다는 부드럽게 움직이나 여전히 구에 해당하는 좌표라고 해도 반대쪽 좌표가 랜덤으로 나와버리면 뒤집혀 버린다. (새로운 문제 2 발생)
 문제2 - 해결방안2 : 그렇다면 랜덤 좌표 범위를 조정하면 되는 게 아닌가? Range에 해당하는 변수를 조절해보았다.
 문제2 - 해결방안2 결과 : 아쉽게도 범위를 조절해보아도 부자연스러운 움직임은 해소되지 않았다.
+```
+    void moveNaturalStateCoord()
+    {
+        xPos = targetObject.transform.localPosition.x + Random.Range(followerMinDistance, followerMaxDistance);
+        yPos = targetObject.transform.localPosition.y + Random.Range(followerMinDistance, followerMaxDistance);
+        zPos = targetObject.transform.localPosition.z + Random.Range(followerMinDistance, followerMaxDistance);
+        desiredPos = new Vector3(xPos, yPos, zPos);
+    }
+```
+```
+    void naturalStateCoord()
+    {
+       location = new Vector3(followingObject.transform.position.x + Random.Range(-1*range, range),
+       followingObject.transform.position.y + Random.Range(-1.5f, 1.5f),
+       followingObject.transform.position.z + Random.Range(-1*range, range));
+    }
+```
 -> 해당문제를 머리속 고민거리 대기열에 넣고 어떻게 되는지 지켜보자!
 
 2/24 그 함수... 뭐였지!
@@ -92,9 +109,82 @@ Ver 1.02 2023-02-27
 
 ![jellyfish4](https://user-images.githubusercontent.com/109887066/227162991-363b3cea-948b-4313-b3a9-e5b5140c8922.gif)
 
+해결방안 :
+
 머리한켠에서 계속 생각하다보니 무언가 떠오르는게 분명 있었다. 퀘퀘한 기억 언저리에 숨겨진 그것은 오래전에 유튜브에서 보았던 베지어 곡선에 대하 영상이었다. 물론 그땐 베지어 곡선이 적용되는 여러곳 혹은 부드럽게 이어지는 그래프를 넋놓고 시간 때우기로 보기만 했었다. 이제 그 시간이 빛을 발할 때가 왔다. 해파리도 그렇게 움직이며 되는 것 아닌가?
 
 움직임을 위해 3개의 좌표가 필요했다. 해파리의 현재 좌표, 해파리가 이동하고자 하는 목적지 좌표 그리고 기준으로 곡선으로 만들어 낼 또다른 제 3의 좌표. 알아보기 쉽게 하기위해 형성된 각각 좌표의 위치에 빨간 구 모양의 Gizmo를 Draw했다. 
+
+베지어 곡선 루트를 받아오는 함수는 아래와 같다.
+
+```
+
+Vector3 GetPointOnBezierCurve(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t){
+        float u = 1f - t;
+        float t2 = t * t;
+        float u2 = u * u;
+        float u3 = u2 * u;
+        float t3 = t2 * t;
+
+        Vector3 result =
+            (u3) * p0 +
+            (3f * u2 * t) * p1 +
+            (3f * u * t2) * p2 +
+            (t3) * p3;
+
+
+
+        return result;}
+    
+ ```
+
+해결결과 : 베지어 곡선을 왜 많이 사용하는지 이해할 정도로 아름답게 해결되었다. 수학은 역시 게임 디자인에 필수적이다.
+
+2/25 UI와의 전쟁!
+------
+
+[UI1](https://user-images.githubusercontent.com/109887066/227167094-8d7c7f64-3b30-4824-a0d3-f6d238955170.gif)
+
+UI를 본격적으로 디자인하기 전부터 불안감과 귀찮음이 엄습했다.
+하지만 UI 없는 게임이 어디있는가? 어차피 해야할 건 제대로 해야한다.
+
+원하는것 : 몰입이 가장 중요한 게임이다. 힐링으 위해 해파리가 중요한데 UI가 가리며 쓰나! 독 UI를 화면에 맞게 HIDE/SHOW 버튼이 필요하다.
+
+해결방법1 : 코드르 짠다.
+
+```
+public void OnClickUI()
+    {
+        if (isDown == true && goingUp == false && goingDown == false)
+        {
+            goingUp = true;
+            LeanTween.moveLocalY(gameObject, rectUItransform.localPosition.y - 200f, 0.5f).setEase(LeanTweenType.easeOutSine).setOnComplete(isUpFalse);
+        }
+        else if (isDown == false && goingUp == false && goingDown == false)
+        {
+            goingDown = true;
+            LeanTween.moveLocalY(gameObject, rectUItransform.localPosition.y + 200f, 0.5f).setEase(LeanTweenType.easeOutSine).setOnComplete(isDownTrue);
+        }
+    }
+
+    public void isUpFalse()
+    {
+        isDown = false;
+        goingUp = false;
+    }
+
+    public void isDownTrue()
+    {
+        isDown = true;
+        goingDown = false;
+    }
+```
+
+화면 크기와 UI rectUItransform의 크기를 받아와 이동시킨다. 그렇지만 보기 싫게 휙휙 바뀔 순 없다. 적어도 나의 게임에선.(문제 발생)
+
+문제 해결방법 : 바퀴를 다시 발명할 필요는 없다고 했다. 훌륭한 개발자들께서 유니티 애셋스토어에 UI 특화 애니메이션 애셋을 만들어두셨다.
+[참고링크](https://assetstore.unity.com/packages/tools/animation/leantween-3595)
+LeanTween 이외에도 Dotween 등 여러 Tweening 툴이 있으나 그나마 익숙한 LeanTween을 사용한다.
 
 
 -해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료ㅜㄴ

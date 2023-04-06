@@ -1,0 +1,47 @@
+﻿<Properties StartupConfiguration="{A2ACDCB0-FF2D-CE93-5A83-A8E5D580CA27}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7daf7067-476b-418a-8666-93d8744ed5c1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIrelatedCS/backGroundBuyButtonCS.cs">
+    <Files>
+      <File FileName="Assets/Scripts/JellyfishRelatedSC/JellyfishClickFeeding.cs" />
+      <File FileName="Assets/Scripts/JellyfishRelatedSC/JellyfishButtonCS.cs" />
+      <File FileName="Assets/Scripts/UIrelatedCS/ShopJellyBuyButton.cs" Line="112" Column="1" />
+      <File FileName="Assets/Scripts/UIrelatedCS/ToggleGoupController.cs" />
+      <File FileName="Assets/Scripts/SystemRelatedSC/prototypeStageController.cs" Line="47" Column="41" />
+      <File FileName="Assets/Scripts/JellyfishRelatedSC/Jellyfish_Speicification.cs" />
+      <File FileName="Library/PackageCache/com.unity.shadergraph@12.1.10/Editor/Drawing/PreviewManager.cs" />
+      <File FileName="Assets/collectorMovement.cs" Line="22" Column="1" />
+      <File FileName="Assets/collectorMovementRB.cs" />
+      <File FileName="Assets/Scripts/UIrelatedCS/backGroundBuyButtonCS.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/JellyfishRelatedSC/NewNewTargetMovement.cs" />
+      <File FileName="Assets/shellfishMoveTarget.cs" />
+      <File FileName="Assets/seaHorseMoveTarget.cs" Line="38" Column="28" />
+      <File FileName="Assets/seahorseMoveController.cs" />
+      <File FileName="Assets/petShopButton.cs" Line="11" Column="1" />
+      <File FileName="Assets/Scripts/SaveRelated/jellyfishLoadController.cs" Line="59" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Jellyfishgame" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="JellyfishRelatedSC" expanded="True" />
+                <Node name="SaveRelated" expanded="True" />
+                <Node name="SystemRelatedSC" expanded="True" />
+                <Node name="UIrelatedCS" expanded="True">
+                  <Node name="backGroundBuyButtonCS.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

@@ -186,6 +186,23 @@ public void OnClickUI()
 [참고링크](https://assetstore.unity.com/packages/tools/animation/leantween-3595)
 LeanTween 이외에도 Dotween 등 여러 Tweening 툴이 있으나 그나마 익숙한 LeanTween을 사용한다.
 
+3/1~3/10경
+
+UI polishing이 끝나고 세이브를 구현한다.
+
+~3/20
+휴식기간
+
+3/20~4/10
+중간고사와 데드라인이 겹쳐버렸다. 더군다나 공모전에도 출품해야하는데...
+크런치모드
+
+4/16
+중간고사 관계로 개발 중단
+
+4/26~
+개발 재시작
+캠페인 모드 개발을 시작하다.
 
 -해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료ㅜㄴ
 -해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료제

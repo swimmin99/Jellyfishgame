@@ -186,7 +186,8 @@ public void OnClickUI()
 [참고링크](https://assetstore.unity.com/packages/tools/animation/leantween-3595)
 LeanTween 이외에도 Dotween 등 여러 Tweening 툴이 있으나 그나마 익숙한 LeanTween을 사용한다.
 
-#3/1~3/10경
+3/1~3/10경 세이브 모드의 구현
+------
 
 UI polishing이 끝나고 세이브를 구현한다.
 JSON FILE을 저장할 쉽고 효율적인 방법을 찾자.
@@ -403,17 +404,20 @@ string price = N["NZD"]["15m"].Value;
 Debug.Log(price);
 ```
 
-
+3/20~4/10경 중간고사 대비와 함께 공모전 대비와 함께 개발
+------
 #3/20~4/10
 중간고사와 데드라인이 겹쳐버렸다. 더군다나 공모전에도 출품해야하는데...
 크런치모드
 대부분의 UI와 사잊 조절, 피딩 기능 또한 쓰레싱 문제까지 크런치 모드 중에 업데이트 되었다.
 
 
-#4/16
+4/16~ 휴식
+------
 중간고사 관계로 개발 중단
 
-#4/26~
+4/26~ 개발 재개
+------
 개발 재시작
 캠페인 모드 개발을 시작하다.
 
@@ -421,4 +425,136 @@ Debug.Log(price);
 -해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료제
 -해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료
 
-#
+~5/10 캠페인 모드 개발의 착수
+------
+![스크린샷3](https://github.com/swimmin99/Jellyfishgame/assets/109887066/30893bb4-c335-46a0-9373-9cc51320defa)
+전체적인 UIㅇ 게임의 전체적인 구성은 제작 완료되었다.
+기본 모드의 제작 로그는 여기서 잠깐 중단된다. 캠페인 모드느 번외에 개발로그를 작성할 계획이다.
+
+~5/12 캠페인 모드 개발의 착수
+------
+![스크린샷4](https://github.com/swimmin99/Jellyfishgame/assets/109887066/63f3fb4d-64d9-4ab8-8454-914680243654)
+캠페인 모드 개발 중에 추가했던 기능인 전체 화면 파티클 이펙트를 기본 모드에도 추가했다.
+
+~5/12 최적화와 빌드 그리고 플레이콘솔
+------
+캠페인 모드 개발이 길어질 것으로 예상되어 기본 모드로 사전 출시를 감행한다.
+아주 간단한 최적화와 테스팅 과정을 거치고 플레이 콘솔에 등록한다.
+
+플레이콘솔은 개발자 등록비용이 있다.
+개인정보처리방침을 게시해야한다.
+
+나만의 웹이 필요하다ㅠㅠㅠ
+괜찮다. 만들면 된다.
+hanghae.xyz 확인해보라!
+
+이제 모든 사항을 기입하였으니 출시할 차례이다.
+
+~5/15 마지막 욕심
+------
+출시 직전에 방생한 해파리를 볼 수 있으면 어떨까라는 생각이 들었다. 
+![스크린샷5](https://github.com/swimmin99/Jellyfishgame/assets/109887066/08d2d7c1-62a7-4300-8681-1ae47e7c6310)
+다시 수정을 가한다. 괜찮다 이번에는 GPT가 있다. GPT가 틀을 짜고 내가 리바이징 하며 좋은 코드를 만들어나간다.
+```
+
+using UnityEngine;
+using System.Security.Cryptography;
+using System.Text;
+using UnityEngine.ProBuilder.Shapes;
+
+public class SphereController : MonoBehaviour
+{
+    public float rotationSpeed = 0.1f; // 회전하는 속도
+    public float rotationDuration = 1f; // 회전하는 시간
+    public AnimationCurve rotationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1); // Curve for the rotation to the target position
+    public ParticleSystem particleSystem; // 파티클 시스템 연결
+
+    private bool isRotatingToTarget = false; // 회전 상태 체크 불리언
+
+    private void OnEnable()
+    {
+        isRotatingToTarget = false;
+        particleSystem.Stop();
+        // Start the constant rotation around the y-axis
+        StartRotation();
+    }
+
+    public void FindPosition(Vector2 coordinate)
+    {
+        // Convert spherical coordinates to a point on the unit sphere
+        float latitude = coordinate.x * Mathf.Deg2Rad;
+        float longitude = coordinate.y * Mathf.Deg2Rad;
+        Vector3 pointOnUnitSphere = new Vector3(
+            Mathf.Cos(latitude) * Mathf.Sin(longitude),
+            Mathf.Sin(latitude),
+            Mathf.Cos(latitude) * Mathf.Cos(longitude)
+        );
+
+        // Calculate the rotation needed to align this point with Vector3.up
+        Quaternion targetRotation = Quaternion.FromToRotation(pointOnUnitSphere, Vector3.up);
+
+        // Start the rotation to the target position
+        StartCoroutine(RotateToTarget(targetRotation, rotationDuration));
+    }
+
+    private void StartRotation()
+    {
+        isRotatingToTarget = false;
+    }
+
+    private void StopRotation()
+    {
+        isRotatingToTarget = true;
+        particleSystem.Play();
+    }
+
+    private System.Collections.IEnumerator RotateToTarget(Quaternion targetRotation, float duration)
+    {
+        StopRotation();
+
+        Quaternion startRotation = transform.rotation;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+            float easedT = rotationCurve.Evaluate(t);
+            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, easedT);
+            yield return null;
+        }
+
+        transform.rotation = targetRotation;
+
+        particleSystem.Stop();
+    }
+
+    public Vector2 GenerateCoordinates(string name, string dateTimeNow, string statusList)
+    {
+        // Concatenate the input strings and compute their hash
+        string combinedInput = name + dateTimeNow + statusList;
+        byte[] inputBytes = Encoding.UTF8.GetBytes(combinedInput);
+        byte[] hashBytes;
+
+        using (SHA256 sha256 = SHA256.Create())
+        {
+            hashBytes = sha256.ComputeHash(inputBytes);
+        }
+
+        // Convert the first two bytes of the hash to a latitude and longitude
+        float latitude = (hashBytes[0] / 256f) * 180f - 90f;  // Range: [-90, 90]
+        float longitude = (hashBytes[1] / 256f) * 360f - 180f;  // Range: [-180, 180]
+
+        return new Vector2(latitude, longitude);
+    }
+}
+```
+
+5/17 Jellyfish has turned Gold
+------
+구글 플레이 콘솔에 게시 완료하였다. 검토 중이며 출시 완료 시 즉각 게시 될 것이다.
+
+나 자신 수고했다.
+
+
+

@@ -7,31 +7,45 @@ Solo project
 - 리깅, 애니메이팅이 필요없는 해파리
 - 대부분의 동작을 쉐이더 버텍스 매니퓰레이션으로 대체
 - 라이팅과 분위기로 어필
+
 2. 간단한 게임 매커닉
 - 방치형 게임 매커닉
 - 힐링 게임 표방
+
 3. 게임 제작 사이클 완성
 - 게임 시스템
 - 라이팅, 사운드, ui, 터치, 배포 등 여러가지 문제 다뤄보기
 
-개발 진척 사항
-Ver 1.00 2023-02-22
-- 해파리 쉐이더 완성
-- 해파리 이동 매커니즘 스크립팅 완성(선형이동 -> 베이지어 곡선을 이용한 부드러운 이동)
-Ver 1.01 2023-02-24
--SHOP UI 프로토타입
--Jellyfish List UI 프로토타입
--UI
-Ver 1.02 2023-02-27
--해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료
+
+|2월 말|3월 초|3월 말|4월 초|4월말|5월 초|5월 말|
+|------|---|----|---|---|---|----|
+|프로토타입완성|핵심 기능 구현|중간고사|세부 기능 추가|밸런스 조정|테스트 후 추가 기능 구현|테스트 후 출시|
+
+프로토타입 완성 :
+-UI프로토타입 제작(상점, 해파리 리스트 관리 UI(트래킹 기능))
+-해파리 모델링, 쉐이더(vertex manimpulation, Bloom HDR)
+-해파리 움직임 구현
+
+핵심 기능 구현 :
+-세이브 기능
+-클릭 성장, 화폐 드랍, 성장 기능
+
+세부 기능 추가 :
+-성장 화폐 드랍 연결, 성장시 log함수 사용하여 속도 조절, 해파리의 색상 표시 UI 추가
+
+밸런스 조정 :
+-난이도 테스팅 및 세부 기능 조절 값 변화
+
+테스트 후 추가 기능 구현
+-지인들을 상대로 테스트 진행 -> 피드백
+
+테스트 후 출시
+-지인들을 상대로 테스트 진행 -> 큰 문제 없을 시 -> 출시
 
 
-1) 단기 목표 : UI Screen Position to world position -> 해결
-2) UI : BLUR 효과가 있는 UI를 쉐이를 사용하여 구현하여보자.   
----
-개발로그
-=======
-2/22 블렌더를 두려워하지 말자!
+
+
+2/22 블렌더 사용
 -------
 ![jellyfish](https://user-images.githubusercontent.com/109887066/227151352-b90d2f80-3077-431f-bd1a-acbd16e48be7.png)
 
@@ -62,7 +76,7 @@ Ver 1.02 2023-02-27
 하나하나 해결해가도록하자
 
 
-2/22 틀을 짜는 것이 먼저!
+2/22 전체적인 틀 구성
 -------
 
 <img src="https://user-images.githubusercontent.com/109887066/227152943-11b12944-fda0-487f-bbdc-7b317f4d5fff.png" width="300" height="400">
@@ -72,7 +86,7 @@ Ver 1.02 2023-02-27
 정사각형은 Stain 오브젝트로 더러워진 부분을 표현하는 얼룩이다. (추후 넣을지 고민중인 기능)
 
 
-2/23 해파리야 제발 부드럽게 움직여라!
+2/23 해파리으 부드러운 움직임
 ------
 
 해결방안1 : 먼저 랜덤 포지션을 찍어서 해파리를 해당 방향을 향하여 이동하고 거리가 일정 수준 가까워지면 새로운 좌표를 랜덤으로 생성하여 이동하도록 해보자
@@ -104,16 +118,16 @@ Ver 1.02 2023-02-27
 ```
 -> 해당문제를 머리속 고민거리 대기열에 넣고 어떻게 되는지 지켜보자!
 
-2/24 그 함수... 뭐였지!
+2/24 베지어곡선
 ------
 
 ![jellyfish4](https://user-images.githubusercontent.com/109887066/227162991-363b3cea-948b-4313-b3a9-e5b5140c8922.gif)
 
 해결방안 :
 
-머리한켠에서 계속 생각하다보니 무언가 떠오르는게 분명 있었다. 퀘퀘한 기억 언저리에 숨겨진 그것은 오래전에 유튜브에서 보았던 베지어 곡선에 대하 영상이었다. 물론 그땐 베지어 곡선이 적용되는 여러곳 혹은 부드럽게 이어지는 그래프를 넋놓고 시간 때우기로 보기만 했었다. 이제 그 시간이 빛을 발할 때가 왔다. 해파리도 그렇게 움직이며 되는 것 아닌가?
-
-움직임을 위해 3개의 좌표가 필요했다. 해파리의 현재 좌표, 해파리가 이동하고자 하는 목적지 좌표 그리고 기준으로 곡선으로 만들어 낼 또다른 제 3의 좌표. 알아보기 쉽게 하기위해 형성된 각각 좌표의 위치에 빨간 구 모양의 Gizmo를 Draw했다. 
+최근에 인상깊게 보았던 수학 관련 유튜브의 시각화 영상에 베지어 곡선이 있었다. 해파리도 그렇게 움직이며 되는 것 아닌가?
+움직임을 위해 3개의 좌표가 필요하다. 해파리의 현재 좌표, 해파리가 이동하고자 하는 목적지 좌표 그리고 기준으로 곡선으로 만들어 낼 또다른 제 3의 좌표. 
+알아보기 쉽게 하기위해 형성된 각각 좌표의 위치에 빨간 구 모양의 Gizmo를 Draw했다. 
 
 베지어 곡선 루트를 받아오는 함수는 아래와 같다.
 
@@ -142,13 +156,16 @@ Vector3 GetPointOnBezierCurve(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, fl
 
 2/25 UI와의 전쟁!
 ------
+Ver 1.01 2023-02-25
+-SHOP UI 프로토타입
+-Jellyfish List UI 프로토타입
+-UI
+상점의 UI의 기본틀을 완성하였다. UGUI를 사용했으나 Layout과 Anchor의 개념이 헷갈려 오래걸렸다. 여전히 Anchor과 Allign with 의 기능은 어렵다.
 
+Ver 1.02 2023-02-26
 [UI1](https://user-images.githubusercontent.com/109887066/227167094-8d7c7f64-3b30-4824-a0d3-f6d238955170.gif)
 
-UI를 본격적으로 디자인하기 전부터 불안감과 귀찮음이 엄습했다.
-하지만 UI 없는 게임이 어디있는가? 어차피 해야할 건 제대로 해야한다.
-
-원하는것 : 몰입이 가장 중요한 게임이다. 힐링으 위해 해파리가 중요한데 UI가 가리며 쓰나! 독 UI를 화면에 맞게 HIDE/SHOW 버튼이 필요하다.
+원하는것 : 몰입이 가장 중요한 게임이다. 독 UI를 화면에 맞게 HIDE/SHOW 버튼이 필요하다.
 
 해결방법1 : 코드르 짠다.
 
@@ -180,11 +197,21 @@ public void OnClickUI()
     }
 ```
 
-화면 크기와 UI rectUItransform의 크기를 받아와 이동시킨다. 그렇지만 보기 싫게 휙휙 바뀔 순 없다. 적어도 나의 게임에선.(문제 발생)
+화면 크기와 UI rectUItransform의 크기를 받아와 이동시킨다. 부드러운 이동이 아니다 보니 부자연스럽다 (문제발생)
 
 문제 해결방법 : 바퀴를 다시 발명할 필요는 없다고 했다. 훌륭한 개발자들께서 유니티 애셋스토어에 UI 특화 애니메이션 애셋을 만들어두셨다.
 [참고링크](https://assetstore.unity.com/packages/tools/animation/leantween-3595)
+
 LeanTween 이외에도 Dotween 등 여러 Tweening 툴이 있으나 그나마 익숙한 LeanTween을 사용한다.
+
+
+Ver 1.02 2023-02-27
+-해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료
+Toggle로 해파리의 사태를 표시하고 트래킹 시 선택됨 표시의 UI가 해파리 상단에 표시되도록 했다.
+
+1) 단기 목표 : UI Screen Position to world position -> 해결
+2) UI : BLUR 효과가 있는 UI를 쉐이를 사용하여 구현하여보자.  -> Blur은 Computing Power 너무 많이사용 -> 비효율적 컨셉 폐기 단순 미니멀 UI로 선회
+
 
 3/1~3/10경 세이브 모드의 구현
 ------
@@ -195,89 +222,6 @@ JSON FILE을 저장할 쉽고 효율적인 방법을 찾자.
 Stack Overflow의 도움으로 찾은 아래 코드를 참조한다.
 [출처](https://stackoverflow.com/questions/36239705/serialize-and-deserialize-json-and-json-array-in-unity)
 ```
-Example class to serialize:
-
-[Serializable]
-public class Player
-{
-    public string playerId;
-    public string playerLoc;
-    public string playerNick;
-}
-1. ONE DATA OBJECT (NON-ARRAY JSON)
-
-Serializing Part A:
-
-Serialize to Json with the public static string ToJson(object obj); method.
-
-Player playerInstance = new Player();
-playerInstance.playerId = "8484239823";
-playerInstance.playerLoc = "Powai";
-playerInstance.playerNick = "Random Nick";
-
-//Convert to JSON
-string playerToJson = JsonUtility.ToJson(playerInstance);
-Debug.Log(playerToJson);
-Output:
-
-{"playerId":"8484239823","playerLoc":"Powai","playerNick":"Random Nick"}
-Serializing Part B:
-
-Serialize to Json with the public static string ToJson(object obj, bool prettyPrint); method overload. Simply passing true to the JsonUtility.ToJson function will format the data. Compare the output below to the output above.
-
-Player playerInstance = new Player();
-playerInstance.playerId = "8484239823";
-playerInstance.playerLoc = "Powai";
-playerInstance.playerNick = "Random Nick";
-
-//Convert to JSON
-string playerToJson = JsonUtility.ToJson(playerInstance, true);
-Debug.Log(playerToJson);
-Output:
-
-{
-    "playerId": "8484239823",
-    "playerLoc": "Powai",
-    "playerNick": "Random Nick"
-}
-Deserializing Part A:
-
-Deserialize json with the public static T FromJson(string json); method overload.
-
-string jsonString = "{\"playerId\":\"8484239823\",\"playerLoc\":\"Powai\",\"playerNick\":\"Random Nick\"}";
-Player player = JsonUtility.FromJson<Player>(jsonString);
-Debug.Log(player.playerLoc);
-Deserializing Part B:
-
-Deserialize json with the public static object FromJson(string json, Type type); method overload.
-
-string jsonString = "{\"playerId\":\"8484239823\",\"playerLoc\":\"Powai\",\"playerNick\":\"Random Nick\"}";
-Player player = (Player)JsonUtility.FromJson(jsonString, typeof(Player));
-Debug.Log(player.playerLoc);
-Deserializing Part C:
-
-Deserialize json with the public static void FromJsonOverwrite(string json, object objectToOverwrite); method. When JsonUtility.FromJsonOverwrite is used, no new instance of that Object you are deserializing to will be created. It will simply re-use the instance you pass in and overwrite its values.
-
-This is efficient and should be used if possible.
-
-Player playerInstance;
-void Start()
-{
-    //Must create instance once
-    playerInstance = new Player();
-    deserialize();
-}
-
-void deserialize()
-{
-    string jsonString = "{\"playerId\":\"8484239823\",\"playerLoc\":\"Powai\",\"playerNick\":\"Random Nick\"}";
-
-    //Overwrite the values in the existing class instance "playerInstance". Less memory Allocation
-    JsonUtility.FromJsonOverwrite(jsonString, playerInstance);
-    Debug.Log(playerInstance.playerLoc);
-}
-2. MULTIPLE DATA(ARRAY JSON)
-
 Your Json contains multiple data objects. For example playerId appeared more than once. Unity's JsonUtility does not support array as it is still new but you can use a helper class from this person to get array working with JsonUtility.
 
 Create a class called JsonHelper. Copy the JsonHelper directly from below.
@@ -410,6 +354,14 @@ Debug.Log(price);
 중간고사와 데드라인이 겹쳐버렸다. 더군다나 공모전에도 출품해야하는데...
 크런치모드
 대부분의 UI와 사잊 조절, 피딩 기능 또한 쓰레싱 문제까지 크런치 모드 중에 업데이트 되었다.
+먹이 줄 시에 커지는 사이즈 등의 수를 맞추는 과정을 거친다.
+
+
+3/31 새로운 세가지 해파리 모델을 적용
+1단계 : 아기 해파리
+2단계 : 준성체 해파리
+3단계 : 성체 해파리
+각각을 Blender을 사용해 모델링 했으며 먹이 클릭 양에 맞추 변화하도록 Case문을 사용해 코드 작성
 
 
 4/16~ 휴식
@@ -553,6 +505,13 @@ public class SphereController : MonoBehaviour
 5/17 Jellyfish has turned Gold
 ------
 구글 플레이 콘솔에 게시 완료하였다. 검토 중이며 출시 완료 시 즉각 게시 될 것이다.
+
+5/21
+개인정보처리방침에 문제가 있어 rejection mail을 받았다.
+해당부분을 수정하였다.
+
+5/22
+마켓에 올라왔다. 드디어.
 
 나 자신 수고했다.
 

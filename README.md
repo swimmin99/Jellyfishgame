@@ -413,6 +413,32 @@ Debug.Log(price);
     }
 ```
 손쉽게 Hexa to Color(Vector 4)로 바꿔주는 코드이다.
+```
+
+   private const byte k_MaxByteForOverexposedColor = 191; //internal Unity const 
+        private Color ChangeHDRColorIntensity(Color subjectColor, float intensityChange)
+    {
+        // Get color intensity
+        float maxColorComponent = subjectColor.maxColorComponent;
+        float scaleFactorToGetIntensity = k_MaxByteForOverexposedColor / maxColorComponent;
+        float currentIntensity = Mathf.Log(255f / scaleFactorToGetIntensity) / Mathf.Log(2f);
+
+        // Get original color with ZERO intensity
+        float currentScaleFactor = Mathf.Pow(2, currentIntensity);
+        Color originalColorWithoutIntensity = subjectColor / currentScaleFactor;
+
+        // Add color intensity
+        float modifiedIntensity = currentIntensity + intensityChange;
+
+        // Set color intensity
+        float newScaleFactor = Mathf.Pow(2, modifiedIntensity);
+        Color colorToRetun = originalColorWithoutIntensity * newScaleFactor;
+
+        // Return color
+        return colorToRetun;
+    }
+```
+손쉽게 Color을 HDR로 변환해주는 코드다.
 
 #3/20~4/10
 중간고사와 데드라인이 겹쳐버렸다. 더군다나 공모전에도 출품해야하는데...
@@ -518,6 +544,56 @@ public void FreeButtonClicked(bool fromListUI, GameObject button)
 ```
 코드가 너무 더러우나, 중간고사 이후에 수정하기로 한다.
 
+펫 기능의 구현
+상점에서 언락 버튼
+```
+    private void OnEnable()
+    {
+        stageController = GameObject.FindGameObjectWithTag("StageController").GetComponent<prototypeStageController>();
+        print(buttonNum);
+        print(stageController.freelist.Count);
+        if (buttonNum <= stageController.freelist.Count)
+        {
+            lockImage.SetActive(false);
+        }
+        else
+        {
+            lockImage.SetActive(true);
+        }
+    }
+    public delegate void feature();
+
+    public void ActivateProduct()
+    {
+        print("printDetected");
+        if (buttonNum <= stageController.freelist.Count)
+        {
+            if (targetObject.activeSelf)
+            {
+                targetObject.SetActive(false);
+                stageController.petunlock[buttonNum] = 1;
+
+            }
+            else
+            {
+                targetObject.SetActive(true);
+                stageController.petunlock[buttonNum] = 0;
+
+            }
+        }
+        else
+        {
+            int num = (int)stageController.freelist.Count - buttonNum;
+            GameObject temp;
+            temp = Instantiate(AlertPrefab);
+            temp.GetComponent<AlertCS>().CautionString = (int)Mathf.Abs(num) + "마리의 해파리를 더 방생하세요!";
+            temp.SetActive(true);
+        }
+    }
+}
+```
+
+
 4/16~ 휴식
 ------
 중간고사 관계로 개발 중단
@@ -611,6 +687,8 @@ public void FreeButtonClicked(bool fromListUI, GameObject button)
 ~5/12 캠페인 모드 개발의 착수
 ------
 ![스크린샷4](https://github.com/swimmin99/Jellyfishgame/assets/109887066/63f3fb4d-64d9-4ab8-8454-914680243654)
+
+
 캠페인 모드 개발 중에 추가했던 기능인 전체 화면 파티클 이펙트를 기본 모드에도 추가했다.
 
 충분한 심사 숙고 끝에 캠페인 모드로 위기 상황을 추가하는 것은 애초에 로드맵에 없었으며 계획이 크게 뒤틀린다.

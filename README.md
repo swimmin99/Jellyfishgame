@@ -184,7 +184,7 @@ Ver 1.01 2023-02-25
 상점의 UI의 기본틀을 완성하였다. UGUI를 사용했으나 Layout과 Anchor의 개념이 헷갈려 오래걸렸다. 여전히 Anchor과 Allign with 의 기능은 어렵다.
 
 Ver 1.02 2023-02-26
-[UI1](https://user-images.githubusercontent.com/109887066/227167094-8d7c7f64-3b30-4824-a0d3-f6d238955170.gif)
+![UI1](https://user-images.githubusercontent.com/109887066/227167094-8d7c7f64-3b30-4824-a0d3-f6d238955170.gif)
 
 원하는것 : 몰입이 가장 중요한 게임이다. 독 UI를 화면에 맞게 HIDE/SHOW 버튼이 필요하다.
 

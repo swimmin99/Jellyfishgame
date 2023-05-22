@@ -1,7 +1,10 @@
-# Jellyfishgame
-Solo project
+<img width="821" alt="스크린샷 2023-04-07 오후 9 59 13" src="https://github.com/swimmin99/Jellyfishgame/assets/109887066/dbf0ae0f-7ac6-4bdd-b2c3-443648537c30">
 
-목표
+Jellyfishgame
+Solo project
+---
+
+사전 목표
 
 1. 개발시간 단축
 - 리깅, 애니메이팅이 필요없는 해파리
@@ -11,7 +14,7 @@ Solo project
 
 2. 간단한 게임 매커닉
 - 방치형 게임 매커닉
-- 힐링 게임 표방
+- 힐링 게임 표방 -> 광고 절대 없음
 - 랜덤형 상태 표시로 귀여운 느낌을 추가
 
 
@@ -20,17 +23,16 @@ Solo project
 - 라이팅, 사운드, ui, 터치, 배포 등 여러가지 문제 다뤄보기
 - 세이브, 빌드 등 게임의 최종 부분까지 완수해야 하는 파트 다뤄보기
 
-
+대략적인 계획
 |2월 말|3월 초|3월 말|4월 초|4월말|5월 초|5월 말|
 |------|---|----|---|---|---|----|
 |프로토타입완성|핵심 기능 구현|중간고사|세부 기능 추가|밸런스 조정|테스트 후 추가 기능 구현|테스트 후 출시|
 
+---
 프로토타입 완성 :
 -UI프로토타입 제작(상점, 해파리 리스트 관리 UI(트래킹 기능))
 -해파리 모델링, 쉐이더(vertex manimpulation, Bloom HDR)
 -해파리 움직임 구현
-
----
 
 핵심 기능 구현 :
 -세이브 기능
@@ -227,9 +229,40 @@ LeanTween 이외에도 Dotween 등 여러 Tweening 툴이 있으나 그나마 �
 Ver 1.02 2023-02-27
 -해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료
 Toggle로 해파리의 사태를 표시하고 트래킹 시 선택됨 표시의 UI가 해파리 상단에 표시되도록 했다.
+다음은 리스트를 불러오기 위한 메서드이다.
+```
+
+ void GenerateList()
+    {
+        
+
+        blankWarningUI.SetActive(false);
+
+        List<GameObject> tag_targets = new List<GameObject>();
+
+        tag_targets = refresher.refresher();
+
+        if (tag_targets == null || tag_targets.Count == 0)
+        {
+            blankWarningUI.SetActive(true);
+        }
+        else
+        {
+
+            drawButtons(tag_targets);
+            foreach (GameObject go in tag_targets)
+            {
+                print(go.name);
+            }
+        }
+    }
+```
+
 
 1) 단기 목표 : UI Screen Position to world position -> 해결
 2) UI : BLUR 효과가 있는 UI를 쉐이를 사용하여 구현하여보자.  -> Blur은 Computing Power 너무 많이사용 -> 비효율적 컨셉 폐기 단순 미니멀 UI로 선회
+
+
 
 
 3/1~3/10경 세이브 모드의 구현
@@ -369,6 +402,18 @@ Debug.Log(price);
 
 3/20~4/10경 중간고사 대비와 함께 공모전 대비와 함께 개발
 ------
+3/19 배경 변화 기능을 제대로 추가한다.
+```
+
+    Color GetHexaToColor(string hexacode) {
+        Color myColor;
+        ColorUtility.TryParseHtmlString(hexacode, out myColor);
+
+        return myColor;
+    }
+```
+손쉽게 Hexa to Color(Vector 4)로 바꿔주는 코드이다.
+
 #3/20~4/10
 중간고사와 데드라인이 겹쳐버렸다. 더군다나 공모전에도 출품해야하는데...
 크런치모드
@@ -381,7 +426,97 @@ Debug.Log(price);
 2단계 : 준성체 해파리
 3단계 : 성체 해파리
 각각을 Blender을 사용해 모델링 했으며 먹이 클릭 양에 맞추 변화하도록 Case문을 사용해 코드 작성
+```
+ switch (level)
+                {
+                    case 1:
+                        if (sizeIncrease > level1Size)
+                        {
+                            GetComponent<MeshFilter>().mesh = meshMiddle; level++;
+                            playParticles(particleUpgrade1);
+                            if(jellyfishListUI.activeSelf == true)
+                                jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
+                        }
+                        break;
+                    case 2:
+                        if (sizeIncrease >= level2Size)
+                        {
+                            GetComponent<MeshFilter>().mesh = meshLong; level++;
+                            playParticles(particleUpgrade1);
+                            if(jellyfishListUI.activeSelf == true)
+                                jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
 
+                        }
+                        break;
+                    case 3:
+                        if (sizeIncrease >= level3Size)
+                        {
+                            level++;
+                            playParticles(particleUpgrade2);
+                            if (jellyfishListUI.activeSelf == true)
+                                jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
+
+                        }
+                        break;
+                }
+
+```
+
+이후 방생 기능을 추가한다.
+```
+
+public void FreeButtonClicked(bool fromListUI, GameObject button)
+    {
+        jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().DestroyChildrens();
+        isAsking = true;
+        GameObject popup = Instantiate(AskUI);
+
+        popup.GetComponent<PopUpUISCnew>().CautionString = "당신의 정성으로 \n성체 해파리가 되었습니다!";
+
+        GameObject buttonGroup = popup.transform.Find("PopUpUI").transform.Find("PopUpButtonGroup").gameObject;
+
+        buttonGroup.transform.Find("SellButton").GetComponent<Button>().onClick.AddListener(() => {
+            stageController.money += spec.getsetPrice() * 2;
+            gameObject.transform.parent.transform.parent.gameObject.SetActive(false);
+            popup.SetActive(false);
+            Destroy(gameObject.transform.parent.transform.parent.gameObject);
+
+            Destroy(popup);
+
+            jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
+
+        });
+
+        buttonGroup.transform.Find("KeepButton").GetComponent<Button>().onClick.AddListener(() => {
+            level++;
+
+            jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
+
+        });
+
+        buttonGroup.transform.Find("NoButton").GetComponent<Button>().onClick.AddListener(() => {
+            isAsking = false;
+            jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
+
+        });
+
+  
+            buttonGroup.transform.Find("KeepButton").gameObject.SetActive(false);
+            buttonGroup.transform.Find("FreeButton").GetComponent<Button>().onClick.AddListener(() => {
+                writeToFreeList();
+                gameObject.transform.parent.transform.parent.gameObject.SetActive(false);
+                popup.SetActive(false);
+                Destroy(gameObject.transform.parent.transform.parent.gameObject);
+                Destroy(popup);
+                particleSetFree.SetActive(true);
+                jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
+
+            });
+            buttonGroup.transform.Find("KeepButton").gameObject.SetActive(false);
+        
+    }
+```
+코드가 너무 더러우나, 중간고사 이후에 수정하기로 한다.
 
 4/16~ 휴식
 ------
@@ -390,22 +525,97 @@ Debug.Log(price);
 4/26~ 개발 재개
 ------
 개발 재시작
+
+
 캠페인 모드 개발을 시작하다.
 
--해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료ㅜㄴ
--해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료제
--해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료
 
 ~5/10 캠페인 모드 개발의 착수
 ------
 ![스크린샷3](https://github.com/swimmin99/Jellyfishgame/assets/109887066/30893bb4-c335-46a0-9373-9cc51320defa)
-전체적인 UIㅇ 게임의 전체적인 구성은 제작 완료되었다.
-기본 모드의 제작 로그는 여기서 잠깐 중단된다. 캠페인 모드느 번외에 개발로그를 작성할 계획이다.
 
+전체적인 UI 게임의 전체적인 구성은 제작 완료되었다.
+기본 모드의 제작 로그는 여기서 잠깐 중단된다.
+캠페인 모드 제작에 앞서 TemperatureControl 기능을 넣어 스크립트를 작성한다.
+```
+ if (CrisisIsOn == false)
+                {
+                    upperSideBar.SetActive(false);
+                
+                    Triangle.SetActive(false);
+                    GetComponent<Button>().interactable = false;
+                    DisplayCaution.SetActive(false);
+                    UI.color = Color.white;
+                    CrisisTimer += Time.deltaTime;
+                    if (isAdjusting == false)
+                    {
+                        neutralTimer += Time.deltaTime;
+                        displayTemper = Mathf.MoveTowards(displayTemper, neutralTemper, Time.smoothDeltaTime / 5f);
+
+                        if (neutralTimer > neutralTime)
+                        {
+                            neutralTimer = 0f;
+                            neutralTime = Random.Range(3, 7);
+                            neutralTemper = Random.Range(minTemperature, maxTemperature);
+                        }
+                    }
+                    if (CrisisTimer > CrisisTime)
+                    {
+                        isAdjusting = true;
+                        displayTemper = Mathf.MoveTowards(displayTemper, CrisisTemper, 1f * Time.smoothDeltaTime);
+                        if (displayTemper == CrisisTemper)
+                        {
+                            isAdjusting = false;
+                            CrisisIsOn = true;
+                            DuringCrisisTimer = 0f;
+                        }
+                    }
+
+                }
+                else
+                {
+                    upperSideBar.SetActive(true);
+                    Triangle.SetActive(true);
+                    GetComponent<Button>().interactable = true;
+                    displayTemper = CrisisTemper;
+                    UI.color = new Vector4(0.53f, 0.81f, 0.92f, 1.0f);
+                    DisplayCaution.SetActive(true);
+
+                    CrisisTemper -= Time.deltaTime / divider;
+                    DuringCrisisTimer += Time.deltaTime;
+
+                    if (DuringCrisisTimer > 1f)
+                    {
+
+                        hurtTimer += Time.deltaTime;
+                        if (hurtTimer > 1f)
+                        {
+                            print("hurting");
+                            hurtJelly(jellyfishList.transform, 0.2f);
+                            hurtTimer = 0f;
+                        }
+                    }
+
+                    if (CrisisTemper > CrisisMaxTemp)
+                    {
+                        CrisisIsOn = false;
+                        CrisisTime = Random.Range(CrisisTimeMin, CrisisTimeMax);
+                        CrisisTemper = Random.Range(CrisisMinTemp, CrisisMaxTemp);
+                        CrisisTimer = 0f;
+                        divider = Random.Range(1, 10);
+                    }
+
+                }
+            }
+```
 ~5/12 캠페인 모드 개발의 착수
 ------
 ![스크린샷4](https://github.com/swimmin99/Jellyfishgame/assets/109887066/63f3fb4d-64d9-4ab8-8454-914680243654)
 캠페인 모드 개발 중에 추가했던 기능인 전체 화면 파티클 이펙트를 기본 모드에도 추가했다.
+
+충분한 심사 숙고 끝에 캠페인 모드로 위기 상황을 추가하는 것은 애초에 로드맵에 없었으며 계획이 크게 뒤틀린다.
+파티클 이펙트를 본 기본 게임모드에 적용시키고 TemperatureManager 기능은 폐기한다.
+
 
 ~5/12 최적화와 빌드 그리고 플레이콘솔
 ------
@@ -425,6 +635,7 @@ hanghae.xyz 확인해보라!
 ------
 출시 직전에 방생한 해파리를 볼 수 있으면 어떨까라는 생각이 들었다. 
 ![스크린샷5](https://github.com/swimmin99/Jellyfishgame/assets/109887066/08d2d7c1-62a7-4300-8681-1ae47e7c6310)
+
 다시 수정을 가한다. 괜찮다 이번에는 GPT가 있다. GPT가 틀을 짜고 내가 리바이징 하며 좋은 코드를 만들어나간다.
 ```
 

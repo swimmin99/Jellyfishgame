@@ -1,5 +1,3 @@
-<img width="821" alt="스크린샷 2023-04-07 오후 9 59 13" src="https://github.com/swimmin99/Jellyfishgame/assets/109887066/dbf0ae0f-7ac6-4bdd-b2c3-443648537c30">
-
 Jellyfishgame
 Solo project
 ====
@@ -61,6 +59,11 @@ Solo project
 
 ---
 
+순서도
+----
+<img width="1085" alt="스크린샷 2023-06-18 오후 11 28 43" src="https://github.com/swimmin99/Jellyfishgame/assets/109887066/4bca4383-9bdd-4abc-8e84-10fd25650234">
+
+<img width="668" alt="스크린샷 2023-06-18 오후 11 28 50" src="https://github.com/swimmin99/Jellyfishgame/assets/109887066/c76a519c-6cc4-4619-98bb-59f3bf99916d">
 
 
 

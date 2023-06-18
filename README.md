@@ -452,8 +452,7 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 ```
 ~5/12 캠페인 모드 개발의 착수
 ------
-![스크린샷4](https://github.com/swimmin99/Jellyfishgame/assets/109887066/63f3fb4d-64d9-4ab8-8454-914680243654)
-
+![스크린샷4](https://github.com/swimmin99/Jellyfishgame/assets/109887066/17d603ee-c8e9-48c8-b9dc-40730f36f5a5)
 
 캠페인 모드 개발 중에 추가했던 기능인 전체 화면 파티클 이펙트를 기본 모드에도 추가했다.
 
@@ -476,9 +475,8 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 
 ~5/15 마지막 욕심
 ------
+![스크린샷5](https://github.com/swimmin99/Jellyfishgame/assets/109887066/dca4a8cd-b514-4c8e-a561-ce7432e69938)
 출시 직전에 방생한 해파리를 볼 수 있으면 어떨까라는 생각이 들었다. 
-![스크린샷5](https://github.com/swimmin99/Jellyfishgame/assets/109887066/08d2d7c1-62a7-4300-8681-1ae47e7c6310)
-
 다시 수정을 가한다. 괜찮다 이번에는 GPT가 있다. GPT가 틀을 짜고 내가 리바이징 하며 좋은 코드를 만들어나간다.
 ```
 
@@ -506,6 +504,7 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 
 2023년 6월 3일 오후 12:18
 ---
+![feed](https://github.com/swimmin99/Jellyfishgame/assets/109887066/10ef7e03-aa83-4ab0-b861-423cb43ea64d)
 
 편의성
 -폰트 크기 확대
@@ -517,7 +516,7 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 
 출시일: 6월 4일 오전 9:25
 ---
-
+![news](https://github.com/swimmin99/Jellyfishgame/assets/109887066/45f0cfc2-4857-4784-9264-632a12a7c21f)
 information창 폰트 크기 확대
 바다 속 세상 뉴스 표시 기능 추가
 물 환수 기능 추가!
@@ -529,7 +528,7 @@ information창 폰트 크기 확대
 
 출시일: 6월 5일 오후 4:56
 ---
-
+![clean](https://github.com/swimmin99/Jellyfishgame/assets/109887066/d020d88c-086c-4c73-a546-a089a35fca23)
 청소 기능이 추가되었습니다~ 원하는 때에 해파리 목록 창으로 들어가 환수할 수 있습니다.(물청소)
 너무 오랜 시간 접속 하지 않으면 수족관이 더러워져 청소 시 비용이 발생하니 자주 방문해주세요!~
 배경음악 반복 버그 수정
@@ -545,6 +544,7 @@ information창 폰트 크기 확대
 
 출시일: 6월 6일 오전 10:42
 ---
+![color](https://github.com/swimmin99/Jellyfishgame/assets/109887066/951afe2b-42b4-478f-95d3-129b1a6e6be1)
 
 기능 추가
 해파리 구입 가능 색상 목록이 다양해 졌습니다.
@@ -591,7 +591,7 @@ free버튼 버그 픽스
 
 출시일: 6월 8일 오후 3:48
 ---
-
+![eng](https://github.com/swimmin99/Jellyfishgame/assets/109887066/6efb241d-b7c4-4ddd-930b-7eb9fe54bf70)
 먹이 업그레이드 코드 내 상수값 오기재 오류 수정했습니다!! 버그 제보 감사합니다~
 영어를 지원합니다!
 Now Supports English!
@@ -627,3 +627,20 @@ Splash image redone
 Jellyfish view button UI fixed.
 tutorial image has been changed for localization!
 
+출시일 : 6월 17일 오후
+---
+![ui1](https://github.com/swimmin99/Jellyfishgame/assets/109887066/f99d2621-f67a-4d36-b679-0967787f0d06)
+![ui2](https://github.com/swimmin99/Jellyfishgame/assets/109887066/7a70f866-de89-4842-b915-68fb53004ce1)
+
+
+추가적인 버그를 업데이트 중에 있습니다. 
+다음 업데이트 예고 : 
+젤리 무한 증식 오류 개선
+탐험 기능 추가
+
+Update:
+UI Overhaul!
+===============
+For the next update:
+Fixing infinite jelly bug is in progress
+Adding Key feature "Adventure" in progress

@@ -67,6 +67,8 @@ Solo project
 
 
 
+
+
 #개발로그
 ========
 
@@ -476,6 +478,7 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 ~5/15 마지막 욕심
 ------
 ![스크린샷5](https://github.com/swimmin99/Jellyfishgame/assets/109887066/dca4a8cd-b514-4c8e-a561-ce7432e69938)
+
 출시 직전에 방생한 해파리를 볼 수 있으면 어떨까라는 생각이 들었다. 
 다시 수정을 가한다. 괜찮다 이번에는 GPT가 있다. GPT가 틀을 짜고 내가 리바이징 하며 좋은 코드를 만들어나간다.
 ```
@@ -499,10 +502,11 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
     }
 ```
 
-##5/17 Jellyfish has turned Gold
-------
+=====
+#5/17 Jellyfish has turned Gold
+=====
 
-2023년 6월 3일 오후 12:18
+ver1.0 2023년 6월 3일 오후 12:18
 ---
 ![feed](https://github.com/swimmin99/Jellyfishgame/assets/109887066/10ef7e03-aa83-4ab0-b861-423cb43ea64d)
 
@@ -514,9 +518,10 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 기능
 -평상시 행성 3D 모델 횡축으로 회전하는 기능 추가
 
-출시일: 6월 4일 오전 9:25
+ver1.1 출시일: 6월 4일 오전 9:25
 ---
 ![news](https://github.com/swimmin99/Jellyfishgame/assets/109887066/45f0cfc2-4857-4784-9264-632a12a7c21f)
+
 information창 폰트 크기 확대
 바다 속 세상 뉴스 표시 기능 추가
 물 환수 기능 추가!
@@ -526,9 +531,10 @@ information창 폰트 크기 확대
 버그 픽스
 -최초 실행시 뉴스 고정 출력 버그 수정
 
-출시일: 6월 5일 오후 4:56
+ver1.2 출시일: 6월 5일 오후 4:56
 ---
 ![clean](https://github.com/swimmin99/Jellyfishgame/assets/109887066/d020d88c-086c-4c73-a546-a089a35fca23)
+
 청소 기능이 추가되었습니다~ 원하는 때에 해파리 목록 창으로 들어가 환수할 수 있습니다.(물청소)
 너무 오랜 시간 접속 하지 않으면 수족관이 더러워져 청소 시 비용이 발생하니 자주 방문해주세요!~
 배경음악 반복 버그 수정
@@ -536,13 +542,13 @@ information창 폰트 크기 확대
 뉴스 티커 뉴스 배너 형 사이드 스크롤링으로 변경
 환수(청소)기능 추가
 
-출시일: 6월 5일 오후 6:17
+ver1.3 출시일: 6월 5일 오후 6:17
 ---
 
 먹이 업그레이드 버그 수정!
 피드백 감사합니다~
 
-출시일: 6월 6일 오전 10:42
+ver1.4 출시일: 6월 6일 오전 10:42
 ---
 ![color](https://github.com/swimmin99/Jellyfishgame/assets/109887066/951afe2b-42b4-478f-95d3-129b1a6e6be1)
 
@@ -552,7 +558,7 @@ information창 폰트 크기 확대
 방생 판매 선택 팝업 이전에 경고 문구 추가
 방생 리스트 목록 출력 오류 문제 해결
 
-출시일: 6월 6일 오후 12:12
+ver1.5 출시일: 6월 6일 오후 12:12
 ---
 
 여러분의 성원에 힘입어
@@ -567,7 +573,7 @@ information창 폰트 크기 확대
 펫 시스템 전반적인 버그 픽스
 배경 변경 텍스트 오류 픽스
 
-출시일: 6월 6일 오후 7:12
+ver1.6 출시일: 6월 6일 오후 7:12
 ---
 
 먹이 업그레이드 밸런싱 & 버그픽스 했습니다.
@@ -579,7 +585,7 @@ free버튼 버그 픽스
 해파리 판매 밸런스 조절
 청소버튼 위치조절
 
-출시일: 6월 6일 오후 11:59
+ver1.7 출시일: 6월 6일 오후 11:59
 ---
 
 이제 비싼 해파리일수록 더 비싼 젤리를 생성하고,
@@ -589,9 +595,10 @@ free버튼 버그 픽스
 
 먹이 업그레이드의 가격이 상승하였습니다.
 
-출시일: 6월 8일 오후 3:48
+ver1.8 출시일: 6월 8일 오후 3:48
 ---
 ![eng](https://github.com/swimmin99/Jellyfishgame/assets/109887066/6efb241d-b7c4-4ddd-930b-7eb9fe54bf70)
+
 먹이 업그레이드 코드 내 상수값 오기재 오류 수정했습니다!! 버그 제보 감사합니다~
 영어를 지원합니다!
 Now Supports English!
@@ -616,7 +623,7 @@ Please report bugs all translation errors!
 devhanghae@gmail.com
 
 
-출시일: 6월 10일 오전 10:51
+ver1.9 출시일: 6월 10일 오전 10:51
 ---
 
 스플래쉬이미지 교체
@@ -627,7 +634,7 @@ Splash image redone
 Jellyfish view button UI fixed.
 tutorial image has been changed for localization!
 
-출시일 : 6월 17일 오후
+ver2.0 출시일 : 6월 17일 오후
 ---
 ![ui1](https://github.com/swimmin99/Jellyfishgame/assets/109887066/f99d2621-f67a-4d36-b679-0967787f0d06)
 ![ui2](https://github.com/swimmin99/Jellyfishgame/assets/109887066/7a70f866-de89-4842-b915-68fb53004ce1)

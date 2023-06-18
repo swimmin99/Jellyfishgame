@@ -2,33 +2,40 @@
 
 Jellyfishgame
 Solo project
----
+====
 
 사전 목표
+---
+-> 개발시간 단축
+- 1인 개발이기 때문에 최대한 효율적으로 계획할 필요
 
-1. 개발시간 단축
+1. 그래픽 부문
 - 리깅, 애니메이팅이 필요없는 해파리
 - 대부분의 동작을 쉐이더 버텍스 매니퓰레이션으로 대체
-- 라이팅과 분위기로 어필
+- 포스트프로세싱(라이팅과 분위기)으로 어필 (조사 결과 인디게임은 분위기가 중요)
 
 
-2. 간단한 게임 매커닉
-- 방치형 게임 매커닉
-- 힐링 게임 표방 -> 광고 절대 없음
-- 랜덤형 상태 표시로 귀여운 느낌을 추가
+2. 게임 시스템
+- 인터랙티브 한 월페이퍼 + 미니 게임의 방식
+- 힐링 게임 표방 -> 광고 절대 없음(경험)
+- 랜덤형 상태 표시로 해파리에게 인격, 감성
+- 타이쿤 시스템을 차용
 
-
-3. 게임 제작 사이클 완성
+기대효과
+-> 게임 제작 사이클 완성 경험
 - 게임 시스템
 - 라이팅, 사운드, ui, 터치, 배포 등 여러가지 문제 다뤄보기
-- 세이브, 빌드 등 게임의 최종 부분까지 완수해야 하는 파트 다뤄보기
+- 세이브, 빌드 QA 등 게임의 최종 부분까지 완수해야 하는 파트 다뤄보기
 
 대략적인 계획
 |2월 말|3월 초|3월 말|4월 초|4월말|5월 초|5월 말|
 |------|---|----|---|---|---|----|
 |프로토타입완성|핵심 기능 구현|중간고사|세부 기능 추가|밸런스 조정|테스트 후 추가 기능 구현|테스트 후 출시|
 
+
+세부 계획
 ---
+
 프로토타입 완성 :
 -UI프로토타입 제작(상점, 해파리 리스트 관리 UI(트래킹 기능))
 -해파리 모델링, 쉐이더(vertex manimpulation, Bloom HDR)
@@ -57,29 +64,25 @@ Solo project
 
 
 
-
-
-
-
-
-
-
-
+#개발로그
+========
 
 2/22 블렌더 사용
 -------
 ![jellyfish](https://user-images.githubusercontent.com/109887066/227151352-b90d2f80-3077-431f-bd1a-acbd16e48be7.png)
 
 문제상황 : 3D 모델링에 문외한이다.
-해결방안 : 모델링을 전문적으로 배울 필요는 없으나 기본적인 동작이나 간단한 모델링은 배워두는게 좋다. 유튜브로 가자.
+해결방안 : 모델링을 전문적으로 배울 필요는 없으나 기본적인 동작이나 간단한 모델링은 배워두는게 좋다. 유튜브를 참고한다.
 [참고영상]https://www.youtube.com/watch?v=Nm4fEI7JqC0
 해결결과 : 영상을 보며 꼭 필요할 것으로 보이는 기능을 구글 검색을 통해 속성으로 배워 그럴듯한 모델을 만들어냈다. 어차피 일은 쉐이더가 다 할 것이다. 해결.
 
-2/21 프로토타입의 모습!
+2/21 프로토타입
 -------
 ![jellyfish2](https://user-images.githubusercontent.com/109887066/227154485-e11ffccc-f7ca-4fd9-a1e1-4f23710f0c37.gif)
 
-세부사항 : 먹이를 주는 버튼과 수조, 해파리! 중요 3 요소를 아주 기초적인 수준으로 구현하였다. 이것이 기틀이 될 것이다.
+세부사항 : 먹이를 주는 버튼과 수조, 해파리! 중요 3 요소를 아주 기초적인 수준으로 구현하였다.
+핵심 요소 구현에서부터 시작한다.
+
 #### 쉐이더
 
 쉐이더는 해당 게임 구현에 있어서 매우 중요한 사항이다.
@@ -87,14 +90,13 @@ Solo project
 문제상황 : 나의 뻣뻣한 해파리 모델링이 유연하게 움직일 수 있도록 vertex shader을 적극적으로 조절 할 수 있는 방법이 필요하다.
 
 해결방안 : 평소에도 많은 도움을 얻고 있는(이전에 Orthographic Water Shader을 만들 때 참고한적 있다) Cyanilux의 개발로그를 참조한다.
-
-기억하자 바퀴를 다시 발명할 필요는 없다!
+기억하자 바퀴를 다시 발명할 필요는 없다.
 
 [참고링크](https://www.cyanilux.com/tutorials/jellyfish-shader-breakdown/)
 
-해결결과 : 유연하게 움직이는 해파리를 구현했다. 그러나 새로운 문제가 발생한다. 해파리가 어떻게 움직여야하지? 랜덤한 방향을 어떻게 지정하지? 해파리는 발광해야하는데?
+해결결과 : 유연하게 움직이는 해파리를 구현했다. 그러나 새로운 문제 발생.
+해파리가 어떻게 움직여야하지? 랜덤한 방향을 어떻게 지정하지? 해파리는 발광해야하는데?
 
-하나하나 해결해가도록하자
 
 
 2/22 전체적인 틀 구성
@@ -175,7 +177,7 @@ Vector3 GetPointOnBezierCurve(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, fl
 
 해결결과 : 베지어 곡선을 왜 많이 사용하는지 이해할 정도로 아름답게 해결되었다. 수학은 역시 게임 디자인에 필수적이다.
 
-2/25 UI와의 전쟁!
+2/25 UI 기틀
 ------
 Ver 1.01 2023-02-25
 -SHOP UI 프로토타입
@@ -271,134 +273,8 @@ Toggle로 해파리의 사태를 표시하고 트래킹 시 선택됨 표시의 
 UI polishing이 끝나고 세이브를 구현한다.
 JSON FILE을 저장할 쉽고 효율적인 방법을 찾자.
 
-Stack Overflow의 도움으로 찾은 아래 코드를 참조한다.
+Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 플레이트 코드)
 [출처](https://stackoverflow.com/questions/36239705/serialize-and-deserialize-json-and-json-array-in-unity)
-```
-Your Json contains multiple data objects. For example playerId appeared more than once. Unity's JsonUtility does not support array as it is still new but you can use a helper class from this person to get array working with JsonUtility.
-
-Create a class called JsonHelper. Copy the JsonHelper directly from below.
-
-public static class JsonHelper
-{
-    public static T[] FromJson<T>(string json)
-    {
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-        return wrapper.Items;
-    }
-
-    public static string ToJson<T>(T[] array)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
-        return JsonUtility.ToJson(wrapper);
-    }
-
-    public static string ToJson<T>(T[] array, bool prettyPrint)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
-        return JsonUtility.ToJson(wrapper, prettyPrint);
-    }
-
-    [Serializable]
-    private class Wrapper<T>
-    {
-        public T[] Items;
-    }
-}
-Serializing Json Array:
-
-Player[] playerInstance = new Player[2];
-
-playerInstance[0] = new Player();
-playerInstance[0].playerId = "8484239823";
-playerInstance[0].playerLoc = "Powai";
-playerInstance[0].playerNick = "Random Nick";
-
-playerInstance[1] = new Player();
-playerInstance[1].playerId = "512343283";
-playerInstance[1].playerLoc = "User2";
-playerInstance[1].playerNick = "Rand Nick 2";
-
-//Convert to JSON
-string playerToJson = JsonHelper.ToJson(playerInstance, true);
-Debug.Log(playerToJson);
-Output:
-
-{
-    "Items": [
-        {
-            "playerId": "8484239823",
-            "playerLoc": "Powai",
-            "playerNick": "Random Nick"
-        },
-        {
-            "playerId": "512343283",
-            "playerLoc": "User2",
-            "playerNick": "Rand Nick 2"
-        }
-    ]
-}
-Deserializing Json Array:
-
-string jsonString = "{\r\n    \"Items\": [\r\n        {\r\n            \"playerId\": \"8484239823\",\r\n            \"playerLoc\": \"Powai\",\r\n            \"playerNick\": \"Random Nick\"\r\n        },\r\n        {\r\n            \"playerId\": \"512343283\",\r\n            \"playerLoc\": \"User2\",\r\n            \"playerNick\": \"Rand Nick 2\"\r\n        }\r\n    ]\r\n}";
-
-Player[] player = JsonHelper.FromJson<Player>(jsonString);
-Debug.Log(player[0].playerLoc);
-Debug.Log(player[1].playerLoc);
-Output:
-
-Powai
-
-User2
-If this is a Json array from the server and you did not create it by hand:
-
-You may have to Add {"Items": in front of the received string then add } at the end of it.
-
-I made a simple function for this:
-
-string fixJson(string value)
-{
-    value = "{\"Items\":" + value + "}";
-    return value;
-}
-then you can use it:
-
-string jsonString = fixJson(yourJsonFromServer);
-Player[] player = JsonHelper.FromJson<Player>(jsonString);
-3.Deserialize json string without class && De-serializing Json with numeric properties
-
-This is a Json that starts with a number or numeric properties.
-
-For example:
-
-{ 
-"USD" : {"15m" : 1740.01, "last" : 1740.01, "buy" : 1740.01, "sell" : 1744.74, "symbol" : "$"}, 
-
-"ISK" : {"15m" : 179479.11, "last" : 179479.11, "buy" : 179479.11, "sell" : 179967, "symbol" : "kr"},
-
-"NZD" : {"15m" : 2522.84, "last" : 2522.84, "buy" : 2522.84, "sell" : 2529.69, "symbol" : "$"}
-}
-Unity's JsonUtility does not support this because the "15m" property starts with a number. A class variable cannot start with an integer.
-
-Download SimpleJSON.cs from Unity's wiki.
-
-To get the "15m" property of USD:
-
-var N = JSON.Parse(yourJsonString);
-string price = N["USD"]["15m"].Value;
-Debug.Log(price);
-To get the "15m" property of ISK:
-
-var N = JSON.Parse(yourJsonString);
-string price = N["ISK"]["15m"].Value;
-Debug.Log(price);
-To get the "15m" property of NZD:
-
-var N = JSON.Parse(yourJsonString);
-string price = N["NZD"]["15m"].Value;
-Debug.Log(price);
-```
 
 3/20~4/10경 중간고사 대비와 함께 공모전 대비와 함께 개발
 ------
@@ -412,7 +288,7 @@ Debug.Log(price);
         return myColor;
     }
 ```
-손쉽게 Hexa to Color(Vector 4)로 바꿔주는 코드이다.
+손쉽게 Hexa to Color(Vector 4)로 바꿔주는 코드이다. (보일러 플레이트 코드)
 ```
 
    private const byte k_MaxByteForOverexposedColor = 191; //internal Unity const 
@@ -438,7 +314,7 @@ Debug.Log(price);
         return colorToRetun;
     }
 ```
-손쉽게 Color을 HDR로 변환해주는 코드다.
+
 
 #3/20~4/10
 중간고사와 데드라인이 겹쳐버렸다. 더군다나 공모전에도 출품해야하는데...
@@ -461,136 +337,57 @@ Debug.Log(price);
                             GetComponent<MeshFilter>().mesh = meshMiddle; level++;
                             playParticles(particleUpgrade1);
                             if(jellyfishListUI.activeSelf == true)
-                                jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
-                        }
-                        break;
-                    case 2:
-                        if (sizeIncrease >= level2Size)
-                        {
-                            GetComponent<MeshFilter>().mesh = meshLong; level++;
-                            playParticles(particleUpgrade1);
-                            if(jellyfishListUI.activeSelf == true)
-                                jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
-
-                        }
-                        break;
-                    case 3:
-                        if (sizeIncrease >= level3Size)
-                        {
-                            level++;
-                            playParticles(particleUpgrade2);
-                            if (jellyfishListUI.activeSelf == true)
-                                jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
-
-                        }
-                        break;
-                }
+                                jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>
 
 ```
 
 이후 방생 기능을 추가한다.
 ```
 
-public void FreeButtonClicked(bool fromListUI, GameObject button)
-    {
-        jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().DestroyChildrens();
-        isAsking = true;
-        GameObject popup = Instantiate(AskUI);
-
-        popup.GetComponent<PopUpUISCnew>().CautionString = "당신의 정성으로 \n성체 해파리가 되었습니다!";
-
-        GameObject buttonGroup = popup.transform.Find("PopUpUI").transform.Find("PopUpButtonGroup").gameObject;
-
-        buttonGroup.transform.Find("SellButton").GetComponent<Button>().onClick.AddListener(() => {
-            stageController.money += spec.getsetPrice() * 2;
-            gameObject.transform.parent.transform.parent.gameObject.SetActive(false);
-            popup.SetActive(false);
-            Destroy(gameObject.transform.parent.transform.parent.gameObject);
-
-            Destroy(popup);
-
-            jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
-
-        });
-
-        buttonGroup.transform.Find("KeepButton").GetComponent<Button>().onClick.AddListener(() => {
-            level++;
-
-            jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
-
-        });
-
-        buttonGroup.transform.Find("NoButton").GetComponent<Button>().onClick.AddListener(() => {
-            isAsking = false;
-            jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
-
-        });
-
-  
-            buttonGroup.transform.Find("KeepButton").gameObject.SetActive(false);
-            buttonGroup.transform.Find("FreeButton").GetComponent<Button>().onClick.AddListener(() => {
+  buttonGroup.transform.Find("FreeButton").GetComponent<Button>().onClick.AddListener(() => {
                 writeToFreeList();
                 gameObject.transform.parent.transform.parent.gameObject.SetActive(false);
                 popup.SetActive(false);
                 Destroy(gameObject.transform.parent.transform.parent.gameObject);
                 Destroy(popup);
                 particleSetFree.SetActive(true);
+                if(jellyfishListUI.activeSelf== true)
                 jellyfishListUI.transform.Find("Scroll View").Find("Viewport").Find("Content").GetComponent<JellyfishListUI>().Refresh();
 
             });
-            buttonGroup.transform.Find("KeepButton").gameObject.SetActive(false);
-        
-    }
 ```
-코드가 너무 더러우나, 중간고사 이후에 수정하기로 한다.
 
 펫 기능의 구현
+
 상점에서 언락 버튼
 ```
-    private void OnEnable()
-    {
-        stageController = GameObject.FindGameObjectWithTag("StageController").GetComponent<prototypeStageController>();
-        print(buttonNum);
-        print(stageController.freelist.Count);
-        if (buttonNum <= stageController.freelist.Count)
-        {
-            lockImage.SetActive(false);
-        }
-        else
-        {
-            lockImage.SetActive(true);
-        }
-    }
-    public delegate void feature();
 
     public void ActivateProduct()
     {
-        print("printDetected");
-        if (buttonNum <= stageController.freelist.Count)
+        print((int)Mathf.Pow(4, buttonNum));
+        if ((int)Mathf.Pow(4,buttonNum) <= stageController.freelist.Count)
         {
             if (targetObject.activeSelf)
             {
                 targetObject.SetActive(false);
-                stageController.petunlock[buttonNum] = 1;
-
+                stageController.petunlock[buttonNum] = 0;
             }
             else
             {
                 targetObject.SetActive(true);
-                stageController.petunlock[buttonNum] = 0;
-
+                stageController.petunlock[buttonNum] = 1;
             }
         }
         else
         {
-            int num = (int)stageController.freelist.Count - buttonNum;
+            int num = (int)stageController.freelist.Count - (int)Mathf.Pow(4, buttonNum);
             GameObject temp;
             temp = Instantiate(AlertPrefab);
-            temp.GetComponent<AlertCS>().CautionString = (int)Mathf.Abs(num) + "마리의 해파리를 더 방생하세요!";
+            string localizedString = LocalizationSettings.StringDatabase.GetLocalizedString("ScriptLocalization", "moreToFree");
+            temp.GetComponent<AlertCS>().CautionString = (int)Mathf.Abs(num) + localizedString;
             temp.SetActive(true);
         }
     }
-}
 ```
 
 
@@ -648,41 +445,7 @@ public void FreeButtonClicked(bool fromListUI, GameObject button)
                     }
 
                 }
-                else
-                {
-                    upperSideBar.SetActive(true);
-                    Triangle.SetActive(true);
-                    GetComponent<Button>().interactable = true;
-                    displayTemper = CrisisTemper;
-                    UI.color = new Vector4(0.53f, 0.81f, 0.92f, 1.0f);
-                    DisplayCaution.SetActive(true);
-
-                    CrisisTemper -= Time.deltaTime / divider;
-                    DuringCrisisTimer += Time.deltaTime;
-
-                    if (DuringCrisisTimer > 1f)
-                    {
-
-                        hurtTimer += Time.deltaTime;
-                        if (hurtTimer > 1f)
-                        {
-                            print("hurting");
-                            hurtJelly(jellyfishList.transform, 0.2f);
-                            hurtTimer = 0f;
-                        }
-                    }
-
-                    if (CrisisTemper > CrisisMaxTemp)
-                    {
-                        CrisisIsOn = false;
-                        CrisisTime = Random.Range(CrisisTimeMin, CrisisTimeMax);
-                        CrisisTemper = Random.Range(CrisisMinTemp, CrisisMaxTemp);
-                        CrisisTimer = 0f;
-                        divider = Random.Range(1, 10);
-                    }
-
-                }
-            }
+              
 ```
 ~5/12 캠페인 모드 개발의 착수
 ------
@@ -703,9 +466,8 @@ public void FreeButtonClicked(bool fromListUI, GameObject button)
 플레이콘솔은 개발자 등록비용이 있다.
 개인정보처리방침을 게시해야한다.
 
-나만의 웹이 필요하다ㅠㅠㅠ
+나만의 웹이 필요하다
 괜찮다. 만들면 된다.
-hanghae.xyz 확인해보라!
 
 이제 모든 사항을 기입하였으니 출시할 차례이다.
 
@@ -717,29 +479,7 @@ hanghae.xyz 확인해보라!
 다시 수정을 가한다. 괜찮다 이번에는 GPT가 있다. GPT가 틀을 짜고 내가 리바이징 하며 좋은 코드를 만들어나간다.
 ```
 
-using UnityEngine;
-using System.Security.Cryptography;
-using System.Text;
-using UnityEngine.ProBuilder.Shapes;
-
-public class SphereController : MonoBehaviour
-{
-    public float rotationSpeed = 0.1f; // 회전하는 속도
-    public float rotationDuration = 1f; // 회전하는 시간
-    public AnimationCurve rotationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1); // Curve for the rotation to the target position
-    public ParticleSystem particleSystem; // 파티클 시스템 연결
-
-    private bool isRotatingToTarget = false; // 회전 상태 체크 불리언
-
-    private void OnEnable()
-    {
-        isRotatingToTarget = false;
-        particleSystem.Stop();
-        // Start the constant rotation around the y-axis
-        StartRotation();
-    }
-
-    public void FindPosition(Vector2 coordinate)
+ public void FindPosition(Vector2 coordinate)
     {
         // Convert spherical coordinates to a point on the unit sphere
         float latitude = coordinate.x * Mathf.Deg2Rad;
@@ -756,72 +496,131 @@ public class SphereController : MonoBehaviour
         // Start the rotation to the target position
         StartCoroutine(RotateToTarget(targetRotation, rotationDuration));
     }
-
-    private void StartRotation()
-    {
-        isRotatingToTarget = false;
-    }
-
-    private void StopRotation()
-    {
-        isRotatingToTarget = true;
-        particleSystem.Play();
-    }
-
-    private System.Collections.IEnumerator RotateToTarget(Quaternion targetRotation, float duration)
-    {
-        StopRotation();
-
-        Quaternion startRotation = transform.rotation;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsedTime / duration);
-            float easedT = rotationCurve.Evaluate(t);
-            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, easedT);
-            yield return null;
-        }
-
-        transform.rotation = targetRotation;
-
-        particleSystem.Stop();
-    }
-
-    public Vector2 GenerateCoordinates(string name, string dateTimeNow, string statusList)
-    {
-        // Concatenate the input strings and compute their hash
-        string combinedInput = name + dateTimeNow + statusList;
-        byte[] inputBytes = Encoding.UTF8.GetBytes(combinedInput);
-        byte[] hashBytes;
-
-        using (SHA256 sha256 = SHA256.Create())
-        {
-            hashBytes = sha256.ComputeHash(inputBytes);
-        }
-
-        // Convert the first two bytes of the hash to a latitude and longitude
-        float latitude = (hashBytes[0] / 256f) * 180f - 90f;  // Range: [-90, 90]
-        float longitude = (hashBytes[1] / 256f) * 360f - 180f;  // Range: [-180, 180]
-
-        return new Vector2(latitude, longitude);
-    }
-}
 ```
 
-5/17 Jellyfish has turned Gold
+##5/17 Jellyfish has turned Gold
 ------
-구글 플레이 콘솔에 게시 완료하였다. 검토 중이며 출시 완료 시 즉각 게시 될 것이다.
 
-5/21
-개인정보처리방침에 문제가 있어 rejection mail을 받았다.
-해당부분을 수정하였다.
+2023년 6월 3일 오후 12:18
+---
 
-5/22
-마켓에 올라왔다. 드디어.
+편의성
+-폰트 크기 확대
+-Money(젤리) 터치 범위 확대
+-Money(젤리) 획득 시 사운드 추가
+-UI 구분선 추가
+기능
+-평상시 행성 3D 모델 횡축으로 회전하는 기능 추가
 
-나 자신 수고했다.
+출시일: 6월 4일 오전 9:25
+---
+
+information창 폰트 크기 확대
+바다 속 세상 뉴스 표시 기능 추가
+물 환수 기능 추가!
+너무 오랜 시간동안 자리를 비우면 10젤리를 사용하여
+물을 환수해야 합니다! 잊지말고 한번씩 들러 주세요~
+
+버그 픽스
+-최초 실행시 뉴스 고정 출력 버그 수정
+
+출시일: 6월 5일 오후 4:56
+---
+
+청소 기능이 추가되었습니다~ 원하는 때에 해파리 목록 창으로 들어가 환수할 수 있습니다.(물청소)
+너무 오랜 시간 접속 하지 않으면 수족관이 더러워져 청소 시 비용이 발생하니 자주 방문해주세요!~
+배경음악 반복 버그 수정
+젤리 무한 드랍 버그 수정
+뉴스 티커 뉴스 배너 형 사이드 스크롤링으로 변경
+환수(청소)기능 추가
+
+출시일: 6월 5일 오후 6:17
+---
+
+먹이 업그레이드 버그 수정!
+피드백 감사합니다~
+
+출시일: 6월 6일 오전 10:42
+---
+
+기능 추가
+해파리 구입 가능 색상 목록이 다양해 졌습니다.
+가격 밸런스조정
+방생 판매 선택 팝업 이전에 경고 문구 추가
+방생 리스트 목록 출력 오류 문제 해결
+
+출시일: 6월 6일 오후 12:12
+---
+
+여러분의 성원에 힘입어
+-기능 추가
+해파리 구입 가능 색상 목록이 다양해 졌습니다.
+가격 밸런스조정
+방생 판매 선택 팝업 이전에 경고 문구 추가
+
+-버그 픽스
+방생 리스트 목록 출력 오류 문제 해결
+펫 언락 시 저장 안되는 버그 픽스
+펫 시스템 전반적인 버그 픽스
+배경 변경 텍스트 오류 픽스
+
+출시일: 6월 6일 오후 7:12
+---
+
+먹이 업그레이드 밸런싱 & 버그픽스 했습니다.
+
+출시일: 6월 6일 오후 11:19
+---
+
+free버튼 버그 픽스
+해파리 판매 밸런스 조절
+청소버튼 위치조절
+
+출시일: 6월 6일 오후 11:59
+---
+
+이제 비싼 해파리일수록 더 비싼 젤리를 생성하고,
+더욱 비싼 가격에 팔립니다.
+
+전체적으로 상점 카탈로그의 가격이 상승하였습니다.
+
+먹이 업그레이드의 가격이 상승하였습니다.
+
+출시일: 6월 8일 오후 3:48
+---
+
+먹이 업그레이드 코드 내 상수값 오기재 오류 수정했습니다!! 버그 제보 감사합니다~
+영어를 지원합니다!
+Now Supports English!
+버그픽스
+해파리 판매 금액 계산 식을 개선하였습니다.
+BugFix
+Recalibrated jellyfish price getting equation.
+
+please send any bug to the email below or any other contact channels.
+devhanghae@gmail.com
+이제 다국어를 지원합니다!
+영어를 사용하실 분은 설정에서 언어를 변경하실 수 있습니다.
+(사용 도중 언어를 바꾸는 것을 권장드리진 않습니다.)
+
+해파리 판매 가격 수식을 개선하였습니다.
+젤리 금액 표시 UI 버그를 수정하였습니다.
+Now supporting multi-language!
+Fixed the equation of selling jellyfish.
+Fixed ui displaying jelly(money)
+Fixed minor bugs for UI.
+Please report bugs all translation errors!
+devhanghae@gmail.com
 
 
+출시일: 6월 10일 오전 10:51
+---
+
+스플래쉬이미지 교체
+튜토리얼 이미지가 변경되었습니다.
+
+UI fixed
+Splash image redone
+Jellyfish view button UI fixed.
+tutorial image has been changed for localization!
 

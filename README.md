@@ -186,12 +186,14 @@ Vector3 GetPointOnBezierCurve(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, fl
 2/25 UI 기틀
 ------
 Ver 1.01 2023-02-25
+
 -SHOP UI 프로토타입
 -Jellyfish List UI 프로토타입
 -UI
 상점의 UI의 기본틀을 완성하였다. UGUI를 사용했으나 Layout과 Anchor의 개념이 헷갈려 오래걸렸다. 여전히 Anchor과 Allign with 의 기능은 어렵다.
 
 Ver 1.02 2023-02-26
+
 ![UI1](https://user-images.githubusercontent.com/109887066/227167094-8d7c7f64-3b30-4824-a0d3-f6d238955170.gif)
 
 원하는것 : 몰입이 가장 중요한 게임이다. 독 UI를 화면에 맞게 HIDE/SHOW 버튼이 필요하다.
@@ -322,14 +324,21 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 ```
 
 
-#3/20~4/10
+3/20~4/10
+ ---
+ 
 중간고사와 데드라인이 겹쳐버렸다. 더군다나 공모전에도 출품해야하는데...
 크런치모드
-대부분의 UI와 사잊 조절, 피딩 기능 또한 쓰레싱 문제까지 크런치 모드 중에 업데이트 되었다.
+대부분의 UI와 사이즈 조절, 피딩 기능 또한 쓰레싱 문제까지 크런치 모드 중에 업데이트 되었다.
 먹이 줄 시에 커지는 사이즈 등의 수를 맞추는 과정을 거친다.
 
 
 3/31 새로운 세가지 해파리 모델을 적용
+---
+
+![tutorial4](https://github.com/swimmin99/Jellyfishgame/assets/109887066/c118c771-c0ea-4b29-94b0-e5b3685e48a7)
+
+
 1단계 : 아기 해파리
 2단계 : 준성체 해파리
 3단계 : 성체 해파리
@@ -348,6 +357,10 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 ```
 
 이후 방생 기능을 추가한다.
+
+![tutorial5](https://github.com/swimmin99/Jellyfishgame/assets/109887066/4e1f412e-0484-445d-adeb-250f083328ce)
+
+
 ```
 
   buttonGroup.transform.Find("FreeButton").GetComponent<Button>().onClick.AddListener(() => {
@@ -404,15 +417,12 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 4/26~ 개발 재개
 ------
 개발 재시작
-
-
+추가 컨텐츠로 넣을,
 캠페인 모드 개발을 시작하다.
-
+(계획에는 존재하지 않는다)
 
 ~5/10 캠페인 모드 개발의 착수
 ------
-![스크린샷3](https://github.com/swimmin99/Jellyfishgame/assets/109887066/30893bb4-c335-46a0-9373-9cc51320defa)
-
 전체적인 UI 게임의 전체적인 구성은 제작 완료되었다.
 기본 모드의 제작 로그는 여기서 잠깐 중단된다.
 캠페인 모드 제작에 앞서 TemperatureControl 기능을 넣어 스크립트를 작성한다.
@@ -453,7 +463,7 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
                 }
               
 ```
-~5/12 캠페인 모드 개발의 착수
+~5/12 캠페인 모드 개발 중단
 ------
 ![스크린샷4](https://github.com/swimmin99/Jellyfishgame/assets/109887066/17d603ee-c8e9-48c8-b9dc-40730f36f5a5)
 
@@ -463,16 +473,29 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 파티클 이펙트를 본 기본 게임모드에 적용시키고 TemperatureManager 기능은 폐기한다.
 
 
-~5/12 최적화와 빌드 그리고 플레이콘솔
+
+~5/12 본 게임에 집중, 최적화와 빌드 그리고 플레이콘솔
 ------
 캠페인 모드 개발이 길어질 것으로 예상되어 기본 모드로 사전 출시를 감행한다.
 아주 간단한 최적화와 테스팅 과정을 거치고 플레이 콘솔에 등록한다.
 
-플레이콘솔은 개발자 등록비용이 있다.
-개인정보처리방침을 게시해야한다.
+![](https://github.com/swimmin99/Jellyfishgame/assets/109887066/b0e6d3b5-af9f-40a4-b5a0-256a07a2bbe0)
 
-나만의 웹이 필요하다
+-> 플레이콘솔은 개발자 등록비용이 있다.
+
+![](https://github.com/swimmin99/Jellyfishgame/assets/109887066/f393c0d7-884a-4eb9-8584-44c91e280bcd)
+
+-> 개인정보처리방침을 게시해야한다.
+
+[개인정보종합포털](https://github.com/swimmin99/Jellyfishgame/assets/109887066/f393c0d7-884a-4eb9-8584-44c91e280bcd)
+위 사이트에서 개인정보처리 방침을 만들어서 게시해야한다.
+
+![개인](https://github.com/swimmin99/Jellyfishgame/assets/109887066/445cd5ee-be7c-405a-91a5-fd4a88a91944)
+
+따라서 나만의 웹이 필요하다
 괜찮다. 만들면 된다.
+
+![web](https://github.com/swimmin99/Jellyfishgame/assets/109887066/339ff0ab-413a-4dcb-8c4d-f1fb61ced67d)
 
 이제 모든 사항을 기입하였으니 출시할 차례이다.
 
@@ -503,9 +526,18 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
     }
 ```
 
-=====
+![](https://github.com/swimmin99/Jellyfishgame/assets/109887066/bbfd5c57-4423-4044-a33b-85889b51082b)
+
+7일이 지나도 검토중이라 확인했더니, 대상이 아동 인증 제도가 포함되어 있어 엄청나게 까다로운 심사를 거치고 있었다.
+빠른 출시를 위해 대상에서 아동 인증 제도를 제외한다.
+
+
 #5/17 Jellyfish has turned Gold
 =====
+![release](https://github.com/swimmin99/Jellyfishgame/assets/109887066/2082573d-0aa2-4962-8053-9df4150a9a56)
+
+
+# 아래는 개발로그가 아닌 업데이트 로그입니다.
 
 ver1.0 2023년 6월 3일 오후 12:18
 ---
@@ -578,10 +610,6 @@ ver1.6 출시일: 6월 6일 오후 7:12
 ---
 
 먹이 업그레이드 밸런싱 & 버그픽스 했습니다.
-
-출시일: 6월 6일 오후 11:19
----
-
 free버튼 버그 픽스
 해파리 판매 밸런스 조절
 청소버튼 위치조절
@@ -648,7 +676,6 @@ ver2.0 출시일 : 6월 17일 오후
 
 Update:
 UI Overhaul!
-===============
 For the next update:
 Fixing infinite jelly bug is in progress
 Adding Key feature "Adventure" in progress

@@ -599,7 +599,7 @@ ver1.7 출시일: 6월 6일 오후 11:59
 ver1.8 출시일: 6월 8일 오후 3:48
 ---
 ![eng](https://github.com/swimmin99/Jellyfishgame/assets/109887066/6efb241d-b7c4-4ddd-930b-7eb9fe54bf70)
-
+![eng2](https://github.com/swimmin99/Jellyfishgame/assets/109887066/8cc3b8e6-8055-468d-8da9-141cc3c85b90)
 먹이 업그레이드 코드 내 상수값 오기재 오류 수정했습니다!! 버그 제보 감사합니다~
 영어를 지원합니다!
 Now Supports English!

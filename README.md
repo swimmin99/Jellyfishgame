@@ -124,8 +124,45 @@ Solo project
 
 정사각형은 Stain 오브젝트로 더러워진 부분을 표현하는 얼룩이다. (추후 넣을지 고민중인 기능)
 
+클릭하여 해파리의 크기를 키우는 기능
+
+```
+ private void OnMouseDown()
+    {
+        feedingValue = stageController.foodRatio;
+
+        if (resizing == true)
+        {
+            LeanTween.cancel(gameObject);
+            resizing = false;
+        }
+
+        if (resizing == false)
+        {
+            if (Input.GetMouseButtonDown(0) && isAsking == false)
+            {
+                                Instantiate(food, transform.position, transform.rotation); // particle effect
+                                sizeIncrease += 1 * (int)feedingValue;
+        }
+    }
+```
 
 # 3) 핵심 기능 구현
+
+2/22 해파리 돈 생성 기능
+----
+```
+IEnumerator GenerateMoney()
+    {
+        while (true)
+        {
+            generationTerm = UnityEngine.Random.Range(generationTerm - 5f, generationTerm + 5f);
+            yield return new WaitForSeconds(generationTerm);
+            CreateMoneyObject();
+        }
+    }
+```
+
 
 2/23 해파리의 부드러운 움직임 구현
 ------
@@ -200,6 +237,8 @@ Vector3 GetPointOnBezierCurve(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, fl
 ------
 Ver 1.01 2023-02-25
 
+![](https://github.com/swimmin99/Jellyfishgame/assets/109887066/eb688f4d-cecc-48ef-9c45-188af807cfc5)
+
 -SHOP UI 프로토타입
 -Jellyfish List UI 프로토타입
 -UI
@@ -227,29 +266,40 @@ public void OnClickUI()
             LeanTween.moveLocalY(gameObject, rectUItransform.localPosition.y + 200f, 0.5f).setEase(LeanTweenType.easeOutSine).setOnComplete(isDownTrue);
         }
     }
-
-    public void isUpFalse()
-    {
-        isDown = false;
-        goingUp = false;
-    }
-
-    public void isDownTrue()
-    {
-        isDown = true;
-        goingDown = false;
-    }
 ```
-
-화면 크기와 UI rectUItransform의 크기를 받아와 이동시킨다. 부드러운 이동이 아니다 보니 부자연스럽다 (문제발생)
 
 문제 해결방법 : 바퀴를 다시 발명할 필요는 없다고 했다. 훌륭한 개발자들께서 유니티 애셋스토어에 UI 특화 애니메이션 애셋을 만들어두셨다.
 [참고링크](https://assetstore.unity.com/packages/tools/animation/leantween-3595)
 
 LeanTween 이외에도 Dotween 등 여러 Tweening 툴이 있으나 그나마 익숙한 LeanTween을 사용한다.
 
+-해파리가 랜덤으로 상태메시지를 출력하게 한다
+```
+timer += Time.deltaTime;
+
+        if (timer > statusChangeTime)
+        {
+            if (stageController.isDirty == false)
+            {
+                changeStatus();
+            }
+            statusChangeTime = UnityEngine.Random.Range(15f, 100f);
+            timer = 0f;
+        }
+```
+```
+        myStatus = statusList[UnityEngine.Random.Range(0, statusList.Length)];
+```
+
+화면 크기와 UI rectUItransform의 크기를 받아와 이동시킨다. 부드러운 이동이 아니다 보니 부자연스럽다 (문제발생)
+
+
+
 
 Ver 1.02 2023-02-27
+
+![track](https://github.com/swimmin99/Jellyfishgame/assets/109887066/5eafbe15-eec2-485e-bd35-d80738b7f686)
+
 -해파리 트래킹 상태 표시 UI, TOGGLE, 삭제 구현 완료
 Toggle로 해파리의 사태를 표시하고 트래킹 시 선택됨 표시의 UI가 해파리 상단에 표시되도록 했다.
 다음은 리스트를 불러오기 위한 메서드이다.
@@ -438,6 +488,8 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 
 ~5/10 캠페인 모드 개발의 착수
 ------
+![cam](https://github.com/swimmin99/Jellyfishgame/assets/109887066/d044882d-2b88-4546-a902-c3c863cd0850)
+
 전체적인 UI 게임의 전체적인 구성은 제작 완료되었다.
 기본 모드의 제작 로그는 여기서 잠깐 중단된다.
 캠페인 모드 제작에 앞서 TemperatureControl 기능을 넣어 스크립트를 작성한다.
@@ -480,7 +532,7 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 ```
 ~5/12 캠페인 모드 개발 중단
 ------
-![스크린샷4](https://github.com/swimmin99/Jellyfishgame/assets/109887066/17d603ee-c8e9-48c8-b9dc-40730f36f5a5)
+![stop](https://github.com/swimmin99/Jellyfishgame/assets/109887066/4057852e-df37-4be1-93f9-e7d4c559e08f)
 
 캠페인 모드 개발 중에 추가했던 기능인 전체 화면 파티클 이펙트를 기본 모드에도 추가했다.
 
@@ -516,10 +568,11 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 
 ~5/15 마지막 욕심
 ------
-![스크린샷5](https://github.com/swimmin99/Jellyfishgame/assets/109887066/dca4a8cd-b514-4c8e-a561-ce7432e69938)
+![planet](https://github.com/swimmin99/Jellyfishgame/assets/109887066/703c4956-db3b-4b41-ab1f-914256985eaa)
 
 출시 직전에 방생한 해파리를 볼 수 있으면 어떨까라는 생각이 들었다. 
-다시 수정을 가한다. 괜찮다 이번에는 GPT가 있다. GPT가 틀을 짜고 내가 리바이징 하며 좋은 코드를 만들어나간다.
+행성 모양의 오브젝트가 회전하면서 Jellyfish 이름에서 생성한 수를 바탕으로 행성 위의 위치를 표시한다.
+괜찮다 이번에는 GPT가 있다. GPT가 틀을 짜고 내가 리바이징 하며 좋은 코드를 만들어나간다.
 ```
 
  public void FindPosition(Vector2 coordinate)
@@ -546,7 +599,7 @@ Stack Overflow의 도움으로 찾은 아래 코드를 참조한다. (보일러 
 7일이 지나도 검토중이라 확인했더니, 대상이 아동 인증 제도가 포함되어 있어 엄청나게 까다로운 심사를 거치고 있었다.
 빠른 출시를 위해 대상에서 아동 인증 제도를 제외한다.
 
-# 테스팅 밑 피드백
+# 테스팅 & 피드백
 
 
 #5/17 Jellyfish has turned Gold 출시
